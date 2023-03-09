@@ -2,25 +2,28 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+{ inputs, outputs, config, lib, pkgs, ... }: {
+    imports = [
+        ./fs.nix 
     ];
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  fileSystems = {
-    "/".options = [ "subvol=root" "compress=zstd" ];
-    "/home".options = [ "subvol=home" "compress=zstd" ];
-    "/nix".options = [ "subvol=nix" "compress=zstd" "noatime" ];
-  };
+  nixpkgs.hostPlatform = "x86_64-linux";
+
 
   # Use the systemd-boot EFI boot loader.
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
 
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
   networking.hostName = "home";
   networking.networkmanager.enable = true;
 
