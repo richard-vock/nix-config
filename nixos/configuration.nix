@@ -4,87 +4,50 @@
 
 { inputs, outputs, config, lib, pkgs, ... }: {
     imports = [
+        ./hardware.nix 
         ./boot.nix 
         ./fs.nix 
+        ./networking.nix 
+        ./locale.nix 
+        ./xserver.nix 
+        ./sound.nix 
     ];
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+    nixpkgs = {
+        overlays = [
+            outputs.overlays.additions
+            outputs.overlays.modifications
+            outputs.overlays.unstable-packages
+        ];
+
+        config = {
+            allowUnfree = true;
+        };
+    };
+
+    nix = {
+        registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+        nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
+        settings = {
+            experimental-features = [ "nix-command" "flakes" ];
+            auto-optimise-store = true;
+        };
+    };
 
 
-  # Use the systemd-boot EFI boot loader.
+    users.users.richard = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+    };
 
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
-  networking.hostName = "home";
-  networking.networkmanager.enable = true;
+    environment.systemPackages = with pkgs; [
+        git
+        vim
+        wget
+    ];
 
-  time.timeZone = "Europe/Berlin";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  #console = {
-  #  font = "Lat2-Terminus12";
-  #  #keyMap = "us";
-  #  useXkbConfig = true; # use xkbOptions in tty.
-  #};
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
-  # services.xserver.xkbVariant = "intl"
-
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.richard = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ];
-     #packages = with pkgs; [
-     #  firefox
-     #  thunderbird
-     #];
-   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
-
+    system.stateVersion = "22.05"; # Did you read the comment?
 }
 
