@@ -6,4 +6,8 @@
     networking.networkmanager.enable = true;
 
     networking.firewall.enable = false;
+
+    services.openssh.enable = true;
+    services.openssh.ports = [ 55522 ];
+    services.openssh.permitRootLogin = "no";
 }

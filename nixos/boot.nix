@@ -6,4 +6,6 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.loader.systemd-boot.consoleMode = "max";
+
+    boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/665a078b-7c0c-49a6-8ad2-28c420a76551";
 }
