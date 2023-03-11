@@ -48,16 +48,16 @@
         wget
     ];
 
-    environment.persistence."/persist" = {
-        hideMounts = true;
-        directories = [
-            "/var/lib/nixos"
-            "/etc/NetworkManager/system-connections"
-        ];
-        files = [
-            "/etc/machine-id"
-        ];
-    };
+    #environment.persistence."/persist" = {
+    #    hideMounts = true;
+    #    directories = [
+    #        "/var/lib/nixos"
+    #        "/etc/NetworkManager/system-connections"
+    #    ];
+    #    files = [
+    #        "/etc/machine-id"
+    #    ];
+    #};
 
     system.stateVersion = "22.05"; # Did you read the comment?
 }

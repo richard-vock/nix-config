@@ -13,7 +13,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, nix-colors, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -61,7 +61,7 @@
       homeConfigurations = {
         "richard@home" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs nix-colors; };
           modules = [
             ./home-manager/home.nix
           ];

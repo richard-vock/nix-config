@@ -8,7 +8,7 @@
     # outputs.homeManagerModules.example
 
     # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -49,6 +49,8 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+  colorScheme = inputs.nix-colors.colorSchemes.ayu-dark;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
