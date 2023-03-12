@@ -7,6 +7,7 @@
         ./hardware.nix 
         ./boot.nix 
         ./fs.nix 
+        ./users.nix 
         ./networking.nix 
         ./locale.nix 
         ./xserver.nix 
@@ -35,12 +36,6 @@
             experimental-features = [ "nix-command" "flakes" ];
             auto-optimise-store = true;
         };
-    };
-
-
-    users.users.richard = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" ];
     };
 
     environment.systemPackages = with pkgs; [
