@@ -8,7 +8,7 @@
   
         inputs.nix-colors.homeManagerModules.default
   
-        #./permanence.nix
+        ./permanence.nix
     ];
   
     nixpkgs = {

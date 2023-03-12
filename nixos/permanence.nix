@@ -20,11 +20,6 @@
             "/var/lib/NetworkManager/timestamps"
             { file = "/etc/nix/id_rsa"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
         ];
-	users.richard = {
-            directories = [
-                { directory = ".ssh"; mode = "0700"; }
-            ];
-        };
     };
 
     security.sudo.extraConfig = ''
@@ -48,6 +43,18 @@
 
         echo "restoring blank /root subvolume..."
         btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+        btrfs subvolume list -o /mnt/home |
+        cut -f9 -d' ' |
+        while read subvolume; do
+          echo "deleting /$subvolume subvolume..."
+          btrfs subvolume delete "/mnt/$subvolume"
+        done &&
+        echo "deleting /home subvolume..." &&
+        btrfs subvolume delete /mnt/home
+
+        echo "restoring blank /home subvolume..."
+        btrfs subvolume snapshot /mnt/home-blank /mnt/home
 
         umount /mnt
     '';
