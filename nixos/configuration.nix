@@ -13,6 +13,7 @@
         ./xserver.nix 
         ./sound.nix 
         ./permanence.nix
+        inputs.home-manager.nixosModules.home-manager
     ];
 
     nixpkgs = {
@@ -35,6 +36,13 @@
         settings = {
             experimental-features = [ "nix-command" "flakes" ];
             auto-optimise-store = true;
+        };
+    };
+
+    home-manager = {
+        extraSpecialArgs = { inherit inputs outputs; };
+        users = { 
+            richard = import ../home-manager;
         };
     };
 

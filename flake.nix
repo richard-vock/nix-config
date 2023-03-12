@@ -58,14 +58,14 @@
       };
 
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "richard@home" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs nix-colors; };
-          modules = [
-            ./home-manager/home.nix
-          ];
-        };
-      };
+      #homeConfigurations = {
+      #  "richard@home" = home-manager.lib.homeManagerConfiguration {
+      #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #    extraSpecialArgs = { inherit inputs outputs nix-colors; };
+      #    modules = [
+      #      ./home-manager/home.nix
+      #    ];
+      #  };
+      #};
     };
 }
