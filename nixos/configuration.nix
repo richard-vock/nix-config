@@ -11,6 +11,7 @@
         ./locale.nix 
         ./xserver.nix 
         ./sound.nix 
+        ./permanence.nix
     ];
 
     nixpkgs = {
@@ -47,17 +48,6 @@
         vim
         wget
     ];
-
-    #environment.persistence."/persist" = {
-    #    hideMounts = true;
-    #    directories = [
-    #        "/var/lib/nixos"
-    #        "/etc/NetworkManager/system-connections"
-    #    ];
-    #    files = [
-    #        "/etc/machine-id"
-    #    ];
-    #};
 
     system.stateVersion = "22.05"; # Did you read the comment?
 }
