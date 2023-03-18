@@ -4,6 +4,6 @@
     users.users.richard = {
         isNormalUser = true;
         initialHashedPassword = "$6$Hdw1MMeMsqK26mwD$Rlsk8f4gyGRqDv3a.2dBvv0YrbmDVMC7pHtm7Hon2CJCwQLzX0ukY0Lni1dCftqJ8Hd2gayAoon3BpQyhJl1.1";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "video" "audio" ];
     };
 }
