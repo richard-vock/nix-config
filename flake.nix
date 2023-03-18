@@ -11,9 +11,10 @@
     # hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, home-manager, impermanence, nix-colors, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, impermanence, nix-colors, stylix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -23,6 +24,10 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
+      base16-schemes = nixpkgs.fetchFromGitHub {
+        owner = "tinted-theming";
+        repo = "base16-schemes";
+      };
     in
     rec {
       # Your custom packages
@@ -56,6 +61,8 @@
           ];
         };
       };
+
+      stylix.base16Scheme = "${base16-schemes}/ayu-dark.yaml";
 
       # Available through 'home-manager --flake .#your-username@your-hostname'
       #homeConfigurations = {
