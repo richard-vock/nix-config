@@ -38,6 +38,11 @@
     programs.git.enable = true;
   
     colorScheme = inputs.nix-colors.colorSchemes.ayu-dark;
+
+    programs.git = {
+        userEmail = "nrtn@posteo.net";
+        userName = "Richard Vock";
+    };
   
     systemd.user.startServices = "sd-switch";
 
