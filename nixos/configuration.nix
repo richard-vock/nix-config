@@ -12,7 +12,6 @@
         ./locale.nix 
         ./xserver.nix 
         ./sound.nix 
-        ./permanence.nix
         inputs.home-manager.nixosModules.home-manager
     ];
 
