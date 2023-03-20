@@ -6,6 +6,7 @@
         # If you want to use modules your own flake exports (from modules/home-manager):
         # outputs.homeManagerModules.example
   
+	./i3.nix
         inputs.nix-colors.homeManagerModules.default
     ];
   
@@ -34,6 +35,10 @@
   
     programs.home-manager.enable = true;
     programs.git.enable = true;
+
+    programs.alacritty = {
+        enable = true;
+    };
   
     colorScheme = inputs.nix-colors.colorSchemes.ayu-dark;
 
