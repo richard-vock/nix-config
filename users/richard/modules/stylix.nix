@@ -30,7 +30,7 @@ with config.lib.stylix.colors.withHashtag;
 
   # i3 tweaks
   xsession.windowManager.i3.config.colors.focused.background = lib.mkForce base0D;
-  xsession.windowManager.i3.config.colors.focused.text = lib.mkForce base01;
+  xsession.windowManager.i3.config.colors.focused.text = lib.mkForce base00;
   xsession.windowManager.i3.config.colors.focused.border = lib.mkForce base0D;
   xsession.windowManager.i3.config.colors.focused.childBorder = lib.mkForce base0D;
 }

@@ -24,28 +24,52 @@ in
             hideEdgeBorders = "both";
           };
           workspaceLayout = "tabbed";
+          workspaceOutputAssign = [
+            {
+              output = "DP-0";
+              workspace = "1";
+            }
+          ];
           focus.followMouse = false;
           startup = [
             { always = true; command = "${pkgs.systemd}/bin/systemd-notify --ready || true"; }
-            #{ always = true; command = "${pkgs.flashfocus}/bin/flashfocus"; }
+            { always = true; command = "${pkgs.flashfocus}/bin/flashfocus"; }
           ];
           modifier = "Mod1";
           keybindings = {
             "${modifier}+Return" = "exec ${terminal}";
             "${modifier}+x" = "exec ${i3lockcmd}";
-            "${modifier}+c" = "kill";
-            "${modifier}+Shift+r" = "reload";
-            "${modifier}+t" = "layout toggle tabbed split";
+            "${modifier}+Shift+c" = "kill";
+            "${modifier}+e" = "exec ${launcher}";
 
             "${modifier}+h" = "focus left";
             "${modifier}+j" = "focus down";
             "${modifier}+k" = "focus up";
             "${modifier}+l" = "focus right";
+            "${modifier}+Left" = "focus left";
+            "${modifier}+Down" = "focus down";
+            "${modifier}+Up" = "focus up";
+            "${modifier}+Right" = "focus right";
 
             "${modifier}+Shift+h" = "move left";
             "${modifier}+Shift+j" = "move down";
             "${modifier}+Shift+k" = "move up";
             "${modifier}+Shift+l" = "move right";
+            "${modifier}+Shift+Left" = "move left";
+            "${modifier}+Shift+Down" = "move down";
+            "${modifier}+Shift+Up" = "move up";
+            "${modifier}+Shift+Right" = "move right";
+
+            "${modifier}+n" = "splith";
+            "${modifier}+m" = "splitv";
+            "${modifier}+f" = "fullscreen toggle";
+            "${modifier}+Shift+space" = "floating toggle";
+            "${modifier}+t" = "layout toggle tabbed split";
+
+            "${modifier}+i" = "focus parent";
+
+            "${modifier}+Shift+r" = "reload";
+            "${modifier}+Shift+p" = "restart";
 
             "${modifier}+1" = "workspace number 1";
             "${modifier}+2" = "workspace number 2";
@@ -57,14 +81,6 @@ in
             "${modifier}+8" = "workspace number 8";
             "${modifier}+9" = "workspace number 9";
             "${modifier}+0" = "workspace number 10";
-
-            "${modifier}+b" = "splith";
-            "${modifier}+v" = "splitv";
-            "${modifier}+f" = "fullscreen toggle";
-            "${modifier}+space" = "floating toggle";
-            "${modifier}+w" = "sticky toggle";
-            "${modifier}+a" = "focus parent";
-            "${modifier}+d" = "exec ${launcher}";
 
             "${modifier}+Shift+1" = "move container to workspace number 1";
             "${modifier}+Shift+2" = "move container to workspace number 2";
