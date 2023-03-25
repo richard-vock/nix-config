@@ -31,11 +31,7 @@ with config.lib.stylix.colors.withHashtag;
     };
   };
 
-  #stylix.image = ./wallpaper.jpg;
-  stylix.image = pkgs.fetchurl {
-    url = "https://www.pixelstalk.net/wp-content/uploads/2016/07/Cyberpunk-Desktop-Images.jpg";
-    sha256 = "42278b15cd3a21bea5ce67f51732ef87ee191fd05ae9c37840cf041a48ee2d48";
-  };
+  stylix.image = ../../assets/black_bg.png;
   stylix.base16Scheme = "${inputs.base16-schemes}/ayu-dark.yaml";
 
   users.users.richard.extraGroups = [ "video" ];
