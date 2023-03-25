@@ -10,9 +10,6 @@
         nvim-tree-lua
         nvim-web-devicons
         tcomment_vim
-        vim-airline
-        vim-airline-clock
-        vim-airline-themes
         vim-nix
         vim-polyglot
         vim-wordmotion
@@ -94,10 +91,6 @@
         nnoremap <C-n> :NvimTreeToggle<CR>
         nnoremap <leader>r :NvimTreeRefresh<CR>
         nnoremap <leader>n :NvimTreeFindFile<CR>
-
-        " airline
-        set laststatus=2
-        let g:airline#extension#tabline#enabled = 1
 
         lua << EOF
           require'nvim-tree'.setup {
