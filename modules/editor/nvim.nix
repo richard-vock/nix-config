@@ -2,176 +2,120 @@
   home-manager.users.richard = { pkgs, ...}: {
     programs.neovim = {
       enable = true;
+      withNodeJs = true;
       plugins = with pkgs.vimPlugins; [
-        catppuccin-nvim
-        (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
-        telescope-nvim
-        telescope-manix
+        copilot-vim
+        indentLine
+        lightspeed-nvim
+        nvim-tree-lua
         nvim-web-devicons
-        bufferline-nvim
-        nvim-lspconfig
+        tcomment_vim
+        vim-airline
+        vim-airline-clock
+        vim-airline-themes
         vim-nix
-        csv-vim
-        nvim-compe
-        vim-oscyank
-        indent-blankline-nvim
-        gitsigns-nvim
-        nvim-cmp
-        cmp-nvim-lsp
-        cmp-path
+        vim-polyglot
+        vim-wordmotion
+        #vim-oscyank
       ];
       extraPackages = with pkgs;
-        [
-          # git is needed for gitsigns-nvim
-          # ripgrep and fd are needed for telescope-nvim
-          ripgrep git fd
-          haskell-language-server
-          # ghc, stack and cabal are required to run the language server
-          stack
-          ghc
-          cabal-install
-          manix
-          nil
-          ## TODO: Add
-          ## https://github.com/nvim-treesitter/nvim-treesitter-context
-          ## https://github.com/ggandor/lightspeed.nvim
-          ## https://github.com/mrcjkb/telescope-manix
-          ## Make injections for bash and stuff work
-        ];
+      [
+      ];
       extraConfig = ''
-        " Configure Telescope
-        " Find files using Telescope command-line sugar.
-        nnoremap <leader>ff <cmd>Telescope find_files<cr>
-        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-        nnoremap <leader>fb <cmd>Telescope buffers<cr>
-        nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+        " general
+        set nocp
+        filetype plugin on
+        set hidden
+        set diffopt+=internal,algorithm:patience
+        set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+        set backspace=2
 
-        vmap <C-c> y:OSCYank<cr>
+        " swap files
+        set noswapfile
 
-        nnoremap <silent><A-h> :BufferLineCyclePrev<CR>
-        nnoremap <silent><A-l> :BufferLineCycleNext<CR>
-        nnoremap <silent><A-c> :bdelete!<CR>
+        " clipboard
+        set clipboard=unnamedplus
+        "vmap <C-c> y:OSCYank<cr>
 
-        set completeopt=menuone,noselect
-        set mouse-=a
-        set tw=80
-        set wrap linebreak
+        " visual
+        let &titlestring = @%
+        set title
         set number
-        set signcolumn=yes:2
-        set foldexpr=nvim_treesitter#foldexpr()
+        set hlsearch
+        set nowrap
+        set expandtab
+
+        " conceal fix
+        let g:vim_json_conceal=0
+
+        " folding and indentation
+        set foldmethod=syntax
+        set foldcolumn=4
+        au BufNewFile,BufRead *.py
+          \ set foldmethod=indent |
+          \ set tabstop=4 |
+          \ set softtagstop=4 |
+          \ set shiftwidth=4 |
+          \ set expandtab |
+          \ set autoindent |
+          \ set fileformat=unix
+
+        " keybindings
+        map <C-Space> :bn<CR>
+        map <C-BS> :bp<CR>
+        map <C-@> :bn<CR>
+        map <C-H> :bp<CR>
+        map <C-TAB> <C-w>p
+        nnoremap <C-J> <C-W><C-J>
+        nnoremap <C-K> <C-W><C-K>
+        nnoremap <C-L> <C-W><C-L>
+        "nnoremap <C-H> <C-W><C-H>
+        map <Space> @q
+        map <Insert> "*p
+
+        map J <C-d>
+        map K <C-u>
+
+        map <F1> zR
+        map <F2> zM
+        map <F3> zr
+
+        :command! BW :bn|:bd#
+        map <F4> :BW<CR>
+
+        map <F5> mA
+        map <F6> `A
+        map <F8> :cclose<CR>
+
+        " tcomment
+        let g:tcomment_opleader1 = '<Leader>c'
+
+        " nvim-tree-lua
+        nnoremap <C-n> :NvimTreeToggle<CR>
+        nnoremap <leader>r :NvimTreeRefresh<CR>
+        nnoremap <leader>n :NvimTreeFindFile<CR>
+
+        " airline
+        set laststatus=2
+        let g:airline#extension#tabline#enabled = 1
 
         lua << EOF
-        require("catppuccin").setup({
-         flavour = "mocha",
-         term_colors = true,
-         color_overrides = {
-           latte = {
-            text = "#000000";
-            base = "#E1EEF5",
-           },
-           mocha = {
-            text = "#FFFFFF",
-            base = "#000000",
-           },
-          },
-          highlight_overrides = {
-            latte = function(_)
-              return {
-                NvimTreeNormal = { bg = "#D1E5F0" },
-              }
-            end,
-            mocha = function(mocha)
-              return {
-                TabLineSel = { bg = mocha.pink },
-                NvimTreeNormal = { bg = mocha.none },
-                CmpBorder = { fg = mocha.surface2 },
-                GitSignsChange = { fg = mocha.blue },
-              }
-            end,
-          },
-        })
-        vim.cmd.colorscheme "catppuccin"
-
-        local actions = require('telescope.actions')
-        require('gitsigns').setup()
-        require('telescope').setup {
-          defaults = {
-            mappings = {
-              i = {
-                ["<A-j>"] = actions.move_selection_next,
-                ["<A-k>"] = actions.move_selection_previous
-              }
-            }
+          require'nvim-tree'.setup {
+            view = {
+              width = 40,
+            },
+            renderer = {
+              icons = {
+                show = {
+                  git = true,
+                  folder = true,
+                  file = true,
+                  folder_arrow = true,
+                  modified = true,
+                },
+              },
+            },
           }
-        }
-        require'nvim-treesitter.configs'.setup {
-          indent = {
-            enable = true
-          }
-        }
-        require('bufferline').setup {
-          options = {
-            show_close_icon = false,
-            show_buffer_close_icons = false
-          }
-        }
-        require("indent_blankline").setup {
-          options = {
-            space_char_blankline = " ",
-            show_current_context = true,
-            char = "|"
-          }
-        }
-
-        vim.cmd[[
-          match ExtraWhitespace /\s\+$/
-          highlight ExtraWhitespace ctermbg=red guibg=red
-        ]]
-
-        vim.opt.list = true
-        vim.opt.listchars = {
-            eol = "↴",
-        }
-
-        -- LSP + nvim-cmp setup
-        local lspc = require('lspconfig')
-        lspc.hls.setup {}
-        local cmp = require("cmp")
-        cmp.setup {
-          sources = {
-            { name = "nvim_lsp" },
-            { name = "path" },
-          },
-          formatting = {
-            format = function(entry, vim_item)
-              vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                path = "[Path]",
-              })[entry.source.name]
-              return vim_item
-            end
-          },
-          mapping = {
-            ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.close(),
-            ['<CR>'] = cmp.mapping.confirm({
-              behavior = cmp.ConfirmBehavior.Replace,
-              select = true,
-            })
-          },
-        }
-
-        local servers = { 'nil_ls' }
-        for _, lsp in ipairs(servers) do
-          require('lspconfig')[lsp].setup {
-            capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-            on_attach = on_attach,
-          }
-        end
         EOF
       '';
     };
