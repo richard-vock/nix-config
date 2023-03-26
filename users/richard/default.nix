@@ -27,7 +27,7 @@
       enableBashIntegration = true;
       settings = {
         username = {
-          format = "user: [$user]($style) ";
+          format = "[$user]($style) ";
           show_always = true;
         };
         shlvl = {
