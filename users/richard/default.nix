@@ -4,8 +4,6 @@
   imports = [
     ./modules/ssh/ssh_sk.nix
     ./modules/lazygit.nix
-    ./modules/feh.nix
-    ./modules/pistol.nix
   ] ++ lib.optional (!headless) ./desktop.nix;
 
   home = {

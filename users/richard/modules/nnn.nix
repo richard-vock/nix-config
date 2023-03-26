@@ -14,6 +14,7 @@
         imv
         mediainfo
         ffmpegthumbnailer
+        pistol
       ];
       plugins = {
         src = "${pkgs.nnn.src}/plugins";

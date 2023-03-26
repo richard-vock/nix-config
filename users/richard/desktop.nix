@@ -2,8 +2,9 @@
 {
   imports = [
     ./modules/stylix.nix
-    ./modules/nnn.nix
     ./modules/alacritty.nix
+    ./modules/nnn.nix
+    ./modules/feh.nix
   ];
   home = {
     packages = with pkgs; [
