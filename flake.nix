@@ -43,28 +43,6 @@
           ];
           specialArgs = { inherit inputs; };
         };
-        #t480 = nixpkgs.lib.nixosSystem {
-        #  system = "x86_64-linux";
-        #  modules = [
-        #    ./hosts/t480/configuration.nix
-        #    utils.nixosModules.autoGenFromInputs
-        #    home-manager.nixosModules.home-manager
-        #    agenix.nixosModules.age
-        #    nixos-hardware.nixosModules.lenovo-thinkpad-t480
-        #    nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
-        #  ];
-        #  specialArgs = { inherit inputs; };
-        #};
-        #hetznix = nixpkgs.lib.nixosSystem {
-        #  system = "x86_64-linux";
-        #  modules = [
-        #    ./hosts/hetznix/configuration.nix
-        #    agenix.nixosModules.age
-        #  ];
-        #  specialArgs = { inherit inputs; };
-        #};
       };
-
-      #stylix.base16Scheme = "${base16-schemes}/ayu-dark.yaml";
     };
 }
