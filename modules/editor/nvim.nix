@@ -10,6 +10,8 @@
         nvim-tree-lua
         nvim-web-devicons
         tcomment_vim
+        vim-airline
+        vim-airline-themes
         vim-nix
         vim-polyglot
         vim-wordmotion
@@ -83,6 +85,11 @@
         map <F5> mA
         map <F6> `A
         map <F8> :cclose<CR>
+
+        " airline
+        set laststatus=2
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline_theme = 'ayu_mirage'
 
         " tcomment
         let g:tcomment_opleader1 = '<Leader>c'
