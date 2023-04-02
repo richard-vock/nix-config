@@ -9,6 +9,10 @@
     services.xserver = {
         enable = true;
 
+        screenSection = ''
+          Option "metamodes" "HDMI-0: nvidia-auto-select +0+0, DP-0: nvidia-auto-select +2560+0, DP-2: nvidia-auto-select +5120+0"
+        '';
+
         desktopManager = {
           xterm.enable = false;
         };

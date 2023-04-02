@@ -26,8 +26,16 @@ in
           workspaceLayout = "tabbed";
           workspaceOutputAssign = [
             {
-              output = "DP-0";
+              output = "HDMI-0";
               workspace = "1";
+            }
+            {
+              output = "DP-0";
+              workspace = "2";
+            }
+            {
+              output = "DP-2";
+              workspace = "3";
             }
           ];
           focus.followMouse = false;
