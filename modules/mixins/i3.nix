@@ -41,6 +41,7 @@ in
           focus.followMouse = false;
           startup = [
             { always = true; command = "${pkgs.systemd}/bin/systemd-notify --ready || true"; }
+            { always = true; command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; }
             { always = true; command = "${pkgs.flashfocus}/bin/flashfocus"; }
           ];
           modifier = "Mod1";

@@ -9,9 +9,11 @@
   home = {
     packages = with pkgs; [
       alsa-utils
-      inkscape
-      gimp
       evince
+      gimp
+      inkscape
+      networkmanagerapplet
+      networkmanager-openvpn
       pavucontrol
       signal-desktop
     ];
