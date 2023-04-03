@@ -16,6 +16,7 @@ with config.lib.stylix.colors.withHashtag;
     mixins-fonts
     mixins-bluetooth
     mixins-openssh
+    mixins-docker
     editor-nvim
   ];
 
