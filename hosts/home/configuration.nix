@@ -97,6 +97,7 @@ with config.lib.stylix.colors.withHashtag;
     gnumake
     btop
     git
+    ntfs3g
     inputs.agenix.formatter.x86_64-linux
   ];
 
