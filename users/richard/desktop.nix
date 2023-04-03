@@ -12,6 +12,7 @@
       evince
       gimp
       inkscape
+      keepassxc
       networkmanagerapplet
       networkmanager-openvpn
       pavucontrol
