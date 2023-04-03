@@ -17,6 +17,7 @@
       networkmanager-openvpn
       pavucontrol
       signal-desktop
+      spotify
     ];
   };
 
