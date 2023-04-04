@@ -55,6 +55,9 @@ with config.lib.stylix.colors.withHashtag;
     interfaces = {
       "enp5s0".useDHCP = true;
     };
+    extraHosts = ''
+      10.1.50.81  gixel-bon-04
+    '';
   };
 
   services = {
