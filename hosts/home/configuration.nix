@@ -102,6 +102,7 @@ with config.lib.stylix.colors.withHashtag;
     btop
     git
     ntfs3g
+    mariadb
     inputs.agenix.formatter.x86_64-linux
   ];
 
