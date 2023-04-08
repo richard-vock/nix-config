@@ -50,14 +50,14 @@
         " folding and indentation
         set foldmethod=syntax
         set foldcolumn=4
-        au BufNewFile,BufRead *.py
-          \ set foldmethod=indent |
-          \ set tabstop=4 |
-          \ set softtagstop=4 |
-          \ set shiftwidth=4 |
-          \ set expandtab |
-          \ set autoindent |
-          \ set fileformat=unix
+        "au BufNewFile,BufRead *.py
+        "  \ set foldmethod=indent |
+        "  \ set tabstop=4 |
+        "  \ set softtagstop=4 |
+        "  \ set shiftwidth=4 |
+        "  \ set expandtab |
+        "  \ set autoindent |
+        "  \ set fileformat=unix
 
         " keybindings
         map <C-Space> :bn<CR>
