@@ -18,6 +18,7 @@
       pavucontrol
       signal-desktop
       spotify
+      unityhub
     ];
   };
 
