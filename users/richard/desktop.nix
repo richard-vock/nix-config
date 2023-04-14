@@ -12,6 +12,8 @@
       evince
       gimp
       inkscape
+      maim
+      xclip
       keepassxc
       networkmanagerapplet
       networkmanager-openvpn

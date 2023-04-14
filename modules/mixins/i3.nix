@@ -5,6 +5,8 @@ let
   bemenu = "${pkgs.bemenu}/bin/bemenu-run -H 16 -p execute: --fn 'Hack Nerd 10' --tf '#FFFFFF' --scf '#FFFFFF' --ff '#FFFFFF' --tb ''#FFFFFF --nf '#FFFFFF' --hf '#FFFFFF' --nb '#000000' --tb '#000000' --fb '#000000'";
   launcher = bemenu;
   i3lockcmd = "${pkgs.swaylock}/bin/i3lock -c '#232323'";
+  maim = "${pkgs.maim}/bin/maim";
+  xclip = "${pkgs.xclip}/bin/xclip";
 in
 { config = {
     home-manager.users.richard = { pkgs, ... }: {
@@ -59,6 +61,7 @@ in
           ];
           modifier = "Mod1";
           keybindings = {
+            "Print" = "exec ${maim} -s | ${xclip} -selection clipboard -t image/png";
             "${modifier}+Return" = "exec ${terminal}";
             "${modifier}+x" = "exec ${i3lockcmd}";
             "${modifier}+Shift+c" = "kill";
