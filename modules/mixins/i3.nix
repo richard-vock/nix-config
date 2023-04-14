@@ -13,12 +13,25 @@ in
         config = rec {
           inherit terminal;
           bars = [{
+            trayOutput = "DP-2";
             fonts = {
               names = [ "Hack Nerd" ];
               size = 11.0;
             };
-            # statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-primary.toml";
-            # extraConfig = "height 20";
+            statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-default.toml";
+            extraConfig = "height 25";
+            colors = {
+              focusedWorkspace = {
+                background = "#59c2ff";
+                text = "#000000";
+                border = "#000000";
+              };
+              # activeWorkspace = {
+              #   background = "#59c2ff";
+              #   text = "#000000";
+              #   border = "#000000";
+              # };
+            };
           }];
           window = {
             hideEdgeBorders = "both";
