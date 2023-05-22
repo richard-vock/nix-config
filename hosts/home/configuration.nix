@@ -103,6 +103,7 @@ with config.lib.stylix.colors.withHashtag;
     git
     ntfs3g
     mariadb
+    nodejs
     inputs.agenix.formatter.x86_64-linux
   ];
 
