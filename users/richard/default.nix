@@ -18,6 +18,7 @@
       btop
       pciutils
       brave
+      firefox
       tree
     ];
   };
