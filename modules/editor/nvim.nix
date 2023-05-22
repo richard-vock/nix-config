@@ -14,6 +14,7 @@
         vim-airline-themes
         vim-nix
         vim-polyglot
+        vim-svelte
         vim-wordmotion
         #vim-oscyank
       ];
