@@ -15,6 +15,7 @@
       maim
       xclip
       keepassxc
+      keeweb
       networkmanagerapplet
       networkmanager-openvpn
       pavucontrol
