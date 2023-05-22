@@ -21,6 +21,7 @@
       signal-desktop
       spotify
       unityhub
+      libreoffice-qt
     ];
   };
 
