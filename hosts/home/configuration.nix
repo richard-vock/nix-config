@@ -104,6 +104,7 @@ with config.lib.stylix.colors.withHashtag;
     ntfs3g
     mariadb
     nodejs
+    octave
     inputs.agenix.formatter.x86_64-linux
   ];
 
