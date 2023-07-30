@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ...}: {
   imports = [
+    ../mixins/openssh.nix
     ../mixins/fonts.nix
     ../mixins/nvim.nix
   ];
