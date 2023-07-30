@@ -3,7 +3,6 @@
   imports = [
     ./modules/stylix.nix
     ./modules/alacritty.nix
-    ./modules/nnn.nix
     ./modules/feh.nix
   ];
   home = {
@@ -14,10 +13,7 @@
       inkscape
       maim
       xclip
-      keepassxc
-      keeweb
       networkmanagerapplet
-      networkmanager-openvpn
       pavucontrol
       signal-desktop
       spotify
