@@ -19,6 +19,8 @@
       spotify
       unityhub
       libreoffice-qt
+      firefox
+      vivaldi
     ];
   };
 

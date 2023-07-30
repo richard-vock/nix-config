@@ -17,9 +17,6 @@
       unzip
       btop
       pciutils
-      brave
-      firefox
-      vivaldi
       tree
     ];
   };
