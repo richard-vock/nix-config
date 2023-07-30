@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ...}: {
   imports = [
+    ../mixins/fonts.nix
     ../mixins/nvim.nix
   ];
   environment.systemPackages = with pkgs; [

@@ -13,7 +13,6 @@ with config.lib.stylix.colors.withHashtag;
     mixins-obs
     mixins-v4l2loopback
     mixins-i3status
-    mixins-fonts
     mixins-bluetooth
     mixins-openssh
     mixins-docker
