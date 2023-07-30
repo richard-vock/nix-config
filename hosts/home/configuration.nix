@@ -10,10 +10,8 @@ with config.lib.stylix.colors.withHashtag;
     profiles-desktop
     users-richardvock
     profiles-i3
-    profiles-pipewire
     mixins-obs
     mixins-v4l2loopback
-    mixins-bluetooth
     mixins-docker
     mixins-steam
     mixins-mysql
