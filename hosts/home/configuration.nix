@@ -106,6 +106,8 @@ with config.lib.stylix.colors.withHashtag;
     mariadb
     nodejs
     octave
+    ranger
+    xfce.thunar
     inputs.agenix.formatter.x86_64-linux
   ];
 
