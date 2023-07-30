@@ -7,6 +7,7 @@ with config.lib.stylix.colors.withHashtag;
     ./disks.nix
     ./hardware-configuration.nix
     profiles-base
+    profiles-desktop
     users-richardvock
     profiles-i3
     profiles-pipewire
@@ -15,6 +16,8 @@ with config.lib.stylix.colors.withHashtag;
     mixins-bluetooth
     mixins-docker
     mixins-steam
+    mixins-mysql
+    mixins-nodejs
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -90,25 +93,6 @@ with config.lib.stylix.colors.withHashtag;
     nvidia.modesetting.enable = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
-
-  environment.systemPackages = with pkgs; [
-    wget
-    vim
-    tmux
-    gnumake
-    btop
-    git
-    ntfs3g
-    sshfs
-    usbutils
-    mariadb
-    nodejs
-    octave
-    vlc
-    ranger
-    xfce.thunar
-    inputs.agenix.formatter.x86_64-linux
-  ];
 
   system.stateVersion = "22.11";
 }

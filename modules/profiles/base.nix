@@ -14,6 +14,13 @@
     btop
     pciutils
     tree
+    wget
+    tmux
+    gnumake
+    ntfs3g
+    sshfs
+    usbutils
+    inputs.agenix.formatter.x86_64-linux
   ];
   nix = {
     settings = {
