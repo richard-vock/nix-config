@@ -18,7 +18,6 @@ with config.lib.stylix.colors.withHashtag;
     mixins-openssh
     mixins-docker
     mixins-steam
-    editor-nvim
   ];
 
   nixpkgs.config.allowUnfree = true;

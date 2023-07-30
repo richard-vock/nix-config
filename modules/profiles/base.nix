@@ -1,7 +1,8 @@
-{ config, pkgs, lib, inputs, ...}:
-{
+{ config, pkgs, lib, inputs, ...}: {
+  imports = [
+    ../mixins/nvim.nix
+  ];
   environment.systemPackages = with pkgs; [
-    vim
     git
   ];
   nix = {
