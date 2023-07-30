@@ -3,21 +3,11 @@
 {
   imports = [
     ./modules/ssh/ssh_sk.nix
-    ./modules/lazygit.nix
   ] ++ lib.optional (!headless) ./desktop.nix;
 
   home = {
     username = "richard";
     homeDirectory = "/home/richard";
-    packages = with pkgs; [
-      file
-      ripgrep
-      fd
-      unzip
-      btop
-      pciutils
-      tree
-    ];
   };
 
   programs = {

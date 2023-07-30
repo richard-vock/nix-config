@@ -6,6 +6,14 @@
   ];
   environment.systemPackages = with pkgs; [
     git
+    lazygit
+    file
+    ripgrep
+    fd
+    unzip
+    btop
+    pciutils
+    tree
   ];
   nix = {
     settings = {
