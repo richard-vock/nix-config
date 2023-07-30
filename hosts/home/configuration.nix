@@ -103,9 +103,12 @@ with config.lib.stylix.colors.withHashtag;
     btop
     git
     ntfs3g
+    sshfs
+    usbutils
     mariadb
     nodejs
     octave
+    vlc
     ranger
     xfce.thunar
     inputs.agenix.formatter.x86_64-linux
