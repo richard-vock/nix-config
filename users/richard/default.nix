@@ -19,6 +19,7 @@
       pciutils
       brave
       firefox
+      vivaldi
       tree
     ];
   };
