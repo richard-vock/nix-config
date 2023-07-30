@@ -6,12 +6,12 @@ with config.lib.stylix.colors.withHashtag;
   imports = with inputs.self.nixosModules; [
     ./disks.nix
     ./hardware-configuration.nix
+    profiles-base
     users-richardvock
     profiles-i3
     profiles-pipewire
     mixins-obs
     mixins-v4l2loopback
-    mixins-common
     mixins-i3status
     mixins-fonts
     mixins-bluetooth
