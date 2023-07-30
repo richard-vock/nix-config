@@ -13,7 +13,6 @@
       file
       ripgrep
       fd
-      magic-wormhole
       unzip
       btop
       pciutils
