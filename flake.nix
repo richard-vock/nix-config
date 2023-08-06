@@ -1,5 +1,5 @@
 {
-  description = "Matthew's NixOS configuration";
+  description = "Richard Vock's NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -40,6 +40,17 @@
             stylix.nixosModules.stylix
             agenix.nixosModules.age
             ./hosts/home/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+        sync = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            utils.nixosModules.autoGenFromInputs
+            home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
+            agenix.nixosModules.age
+            ./hosts/sync/configuration.nix
           ];
           specialArgs = { inherit inputs; };
         };

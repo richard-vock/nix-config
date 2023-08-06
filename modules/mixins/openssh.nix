@@ -6,7 +6,7 @@
     openFirewall = lib.mkForce true;
     settings = {
       PasswordAuthentication = false;
-      PermitRootLogin = lib.mkForce "no";
+      # PermitRootLogin = lib.mkForce "no";
     };
   };
 }
