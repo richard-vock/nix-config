@@ -9,7 +9,6 @@ with config.lib.stylix.colors.withHashtag;
     profiles-base
     profiles-desktop
     users-richardvock
-    profiles-i3
     mixins-obs
     mixins-v4l2loopback
     mixins-docker
