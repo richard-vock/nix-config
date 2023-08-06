@@ -37,5 +37,9 @@
       '';
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
   };
 }
