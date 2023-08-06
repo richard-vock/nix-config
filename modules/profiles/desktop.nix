@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ...}: {
   imports = [
-    ../mixins/i3.nix
+    ../mixins/xserver.nix
     ../mixins/pipewire.nix
     ../mixins/bluetooth.nix
   ];
