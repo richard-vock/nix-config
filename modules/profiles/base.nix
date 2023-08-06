@@ -19,6 +19,7 @@
     gnumake
     ntfs3g
     sshfs
+    ncdu
     usbutils
     inputs.agenix.formatter.x86_64-linux
   ];
