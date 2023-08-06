@@ -5,9 +5,23 @@
     ../mixins/bluetooth.nix
   ];
   environment.systemPackages = with pkgs; [
+    alsa-utils
+    evince
+    gimp
+    inkscape
+    feh
+    maim
+    xclip
+    networkmanagerapplet
+    pavucontrol
     octave
     vlc
     ranger
     xfce.thunar
+    libreoffice-qt
+    firefox
+    vivaldi
+    signal-desktop
+    spotify
   ];
 }
