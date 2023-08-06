@@ -22,6 +22,7 @@
     ncdu
     usbutils
     inputs.agenix.formatter.x86_64-linux
+    inputs.agenix.packages.x86_64-linux.default
   ];
   nix = {
     settings = {
@@ -43,4 +44,6 @@
       dates = "weekly";
     };
   };
+
+  users.mutableUsers = false;
 }

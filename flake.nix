@@ -38,7 +38,7 @@
             utils.nixosModules.autoGenFromInputs
             home-manager.nixosModules.home-manager
             stylix.nixosModules.stylix
-            agenix.nixosModules.age
+            agenix.nixosModules.default
             ./hosts/home/configuration.nix
           ];
           specialArgs = { inherit inputs; };
@@ -49,7 +49,7 @@
             utils.nixosModules.autoGenFromInputs
             home-manager.nixosModules.home-manager
             stylix.nixosModules.stylix
-            agenix.nixosModules.age
+            agenix.nixosModules.default
             ./hosts/sync/configuration.nix
           ];
           specialArgs = { inherit inputs; };

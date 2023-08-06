@@ -1,32 +1,14 @@
 let
   systems = {
-    h1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC4sGuJY4BQ84vcUOr947uhPa/GMEm9VUapGO6TMqQal";
-    swordfish = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC2EP5GYyELKq33qIIQqPKT3RNNqZaRd5R5kfEaotT5t root@swordfish";
-    t480 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJJ1zPgcnzvK8sUhwX752acg+YkiYR9tyQcZAYj2NAxu root@t480";
-    matrix = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEw6sYFtowoQMYMrlLSQKOPQ+ZrJmmDNkm1K5X6AGCuz root@matrix";
-    hetznix = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINjpw75X8SXBw8r7b4m4e9eNZoON39E5l+7FBLVZdYVz root@hetznix";
+    home = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJrWBRwwSrSQKeGeVZO46qa6ztA52TasRABiBNqvfgLZ root@home";
+    sync = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGER+WekSnVADCVaoucHsBjP+2fiX4OHs0onvdJQFIdb root@sync";
   };
   users = {
-    matthew-t480 = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQClm+SMN9Bg1HZ+MjH1VQYEXAnslGWT9564pj/KGO79WMQLUxdp3WWa1hQadf2PleAIEFEul3knrpRSEK3yHcCk3g+sCh3XIJcFZLesswe0V+kCAw+JBSd18ESJ4Qko+iDK95cDzucLFwXB10FMVKQCrX90KR+Fp6s6eJHcZGmpxTPgNulDpAjM2APluM3xBCe6zZzt+iNIzn3J8PRKbpNNbuw/LMRU8+udrGbLavUMcSk7ER9pAyLGhz//9aHWDPu7ZRje+vTWgnGFpzbtEzdjnP+2v45nLKWG7o7WdTAsAR8WSccjtNoBiVgSmpHr07zJ0/gTeL4PUkk3lbtzF/PdtTQGm3Ng4SjOBlhRVaTuKBlF2X/Rwq+W4LCbHVgA79MyhJxL2TDbKBPUSLfckqxP89e8Q7iQ4XjIHqVb50ojNNLGcOQRrHq14Twwx/ZDDQvMXCsLwM6vyoYa8KdSaASEr1clx78qNp9PHGlr+UztW+EsoZI7j1tzcHMmq2BSK90= matthew@t480";
-    matthew-swordfish = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD7jt+f8gURZcWeo9Sko5kdPW1ORd+CDXsCxyHgGRK5IVKLrluAEC7ha0xlOQ3WtHEiWj3P9/C9UzATjWaMZU5j/A7Ysib2peBFQZ0roYwHDYVZzutF7HJWBc4WW/CPSjWZfza2jC3e/Qe2ktmnbri0oq27EXYJwhs+/70+VA4NZ5d7xD1CnYhv4LdsudSTLJjsyCL6PLVbtUZKW8avyH359R4rLTkklk9H1d0RYGDkHKMFB5ADdlEJwnjRAbjK94u+M6jhN9ahMrfSsbLUd1DcASMoW7fw+Y16l//7cDr8rN32Mi1Vs/mBvJmnN//84QtqJM2UD/lxI/k8aJEXskojfmBP2qd+mevHfuA30b6BtngeDvh5RPnYYDL28g9iyDKMWtBEYMkyF+kbERiiOkxFpudyB7Vd0fYAZxusqq8EOpVnjj97T0hFbGspam/Q9H5tT4U02JG127Z2+ohq5DUYeiMDh3mOs5uc/R+svj00NJtmEuNdqjtyktYP6zfhiVs=";
+    richard = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHPBj2LARlTzFKHC0EohVEwQ+OctYSZkNGVwWdyhPOOWS/Ie9D/g5jZP9iym1SOVh4M/JHtpldeUIOJ2wcLvJkDC/Ijef4HYicBF86UGkWDLo+liYbKNRG+dOfncM4q51FuNjNz9j7W0tYxYBvVlkgB2+6G/Gp/ys9TMlcOvI22ChTetSRcmZ95KZdTDXoMe4NiyqddJE0GDNExPgvxbaNe7J2vmrh/heTlufFzu0W1PmTuMDNEq4whJ/DQEJbYOvXjK5qxlbu8Rl/j+zKJoj0bg9LPSAxloBEJ7VaGkmH2YxMHB7dijRNkuR28i8MvBFV4L6Jxi5PBVPk7yjuySD5 slim@hastromil-2013-06-11";
   };
   allUsers = builtins.attrValues users;
   allSystems = builtins.attrValues systems;
 in
 {
-  "masariBotsSecrets.age".publicKeys = allUsers ++ [ systems.hetznix ];
-  "distributedBuilderKey.age".publicKeys = allUsers ++ [ systems.swordfish systems.t480 ];
-  "cloudflare_api_key.age".publicKeys = allUsers ++ [ systems.swordfish systems.hetznix ];
-  "tunnelvrHerculesClusterJoinToken.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "tunnelvrHerculesBinaryCaches.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "coturn_static_auth.age".publicKeys = allUsers ++ [ systems.matrix ];
-  "synapse_secrets_yaml.age".publicKeys = allUsers ++ [ systems.matrix ];
-  "matthewcroughanHerculesClusterJoinToken.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "matthewcroughanHerculesBinaryCaches.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "nixhowHerculesClusterJoinToken.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "nixhowHerculesBinaryCaches.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "nixhowHerculesSecrets.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "nixifiedAiHerculesBinaryCaches.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "nixifiedAiHerculesClusterJoinToken.age".publicKeys = allUsers ++ [ systems.swordfish ];
-  "pleroma.age".publicKeys = allUsers ++ [ systems.matrix ];
+  "user_richard.age".publicKeys = allUsers ++ allSystems;
 }
