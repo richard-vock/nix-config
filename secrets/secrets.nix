@@ -11,4 +11,5 @@ let
 in
 {
   "user_richard.age".publicKeys = allUsers ++ allSystems;
+  "sync_smb.age".publicKeys = allUsers ++ [ systems.sync ];
 }
