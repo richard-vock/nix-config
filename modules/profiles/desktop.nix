@@ -23,5 +23,6 @@
     vivaldi
     signal-desktop
     spotify
+    blender
   ];
 }
