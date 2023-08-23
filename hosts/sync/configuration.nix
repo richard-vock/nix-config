@@ -46,6 +46,17 @@ with config.lib.stylix.colors.withHashtag;
     '';
   };
 
+  services.syncthing = {
+    enable = true;
+    user = "richard";
+    dataDir = "/data";
+    configDir = "/data/.config/syncthing";
+    overrideDevices = true;
+    devices = {
+      "home" = { id = "FSF5XOH-YJHSOXP-DKT6SUR-XNCUXXT-XLXZNH7-EOMBJQ6-UDHFBPI-CM7EWQ6"; };
+    };
+  };
+
   services = {
     logind.killUserProcesses = true;
   };
