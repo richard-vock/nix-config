@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs2211.url = "github:nixos/nixpkgs/nixos-22.11";
-    nixinate.url = "github:matthewcroughan/nixinate";
     nixos-hardware.url = "github:nixos/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager";
     agenix.url = "github:ryantm/agenix";
@@ -29,7 +28,6 @@
     , utils
     , ...
     } @ inputs: {
-      apps = nixinate.nixinate.x86_64-linux self;
       nixosModules = import ./modules { lib = nixpkgs.lib; };
       nixosConfigurations = {
         home = nixpkgs.lib.nixosSystem {
