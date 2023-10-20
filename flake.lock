@@ -179,15 +179,13 @@
       "locked": {
         "lastModified": 1671116920,
         "narHash": "sha256-QmDGsUUmAGn77UTR7eQJmebl8f3IIUCtmbbAdJqKA3s=",
-        "owner": "matthewcroughan",
-        "repo": "nixinate",
+        "path": "/nix/store/d5ard3yhkgqk610kaz5sargakkzxrr5c-source",
         "rev": "b4d17b8e2a4abc47e93e1a1c466e0286a63640d8",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "matthewcroughan",
-        "repo": "nixinate",
-        "type": "github"
+        "id": "nixinate",
+        "type": "indirect"
       }
     },
     "nixos-hardware": {
