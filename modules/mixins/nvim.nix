@@ -12,6 +12,7 @@
         tcomment_vim
         vim-airline
         vim-airline-themes
+        vim-markdown
         vim-nix
         vim-polyglot
         vim-svelte
@@ -53,6 +54,7 @@
 
         " conceal fix
         let g:vim_json_conceal=0
+        let g:vim_markdown_conceal=0
 
         " folding and indentation
         set foldmethod=syntax
