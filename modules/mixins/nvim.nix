@@ -45,6 +45,12 @@
         set nowrap
         set expandtab
 
+        " indentation
+        set shiftwidth=4
+        set tabstop=4
+        set softtabstop=4
+        set expandtab
+
         " conceal fix
         let g:vim_json_conceal=0
 
