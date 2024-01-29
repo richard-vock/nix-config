@@ -7,7 +7,7 @@ in
   nix.settings.trusted-users = [ "richard" ];
   users.users.richard = {
     isNormalUser = true;
-    passwordFile = config.age.secrets.user_richard.path;
+    hashedPasswordFile = config.age.secrets.user_richard.path;
     extraGroups = [
       "wheel"
       "dialout"
