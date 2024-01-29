@@ -75,7 +75,7 @@ with config.lib.stylix.colors.withHashtag;
     dataDir = "/data";
     configDir = "/data/.config/syncthing";
     overrideDevices = true;
-    devices = {
+    settings.devices = {
       "sync" = { id = "2SLDIR7-EXPR4LU-QPA7EPX-HVIJREX-6C4KX2P-XW6SKKB-OCMPRYN-O7SIZQK"; };
     };
   };
