@@ -20,7 +20,5 @@
         xkbOptions = "eurosign:e,caps:escape";
         xkbVariant = "intl";
     };
-
-    fonts.fonts = with pkgs; [ terminus_font_ttf font-awesome ];
   };
 }
