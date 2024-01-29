@@ -53,7 +53,19 @@ with config.lib.stylix.colors.withHashtag;
       "enp5s0".useDHCP = true;
     };
     extraHosts = ''
-      10.1.50.81  gixel-bon-04
+      10.0.50.142      gixel-ka-05
+      10.0.50.162      gixel-ka-01
+      10.0.50.202      gixel-dgx-01
+      10.0.50.63       gixel-dome-01
+      10.0.50.65       gixel-ka-02
+      10.0.50.68       gixel-ka-07
+      10.0.50.70       gixel-ka-06
+      10.0.50.85       gixel-ka-04
+      10.0.50.95       gixel-ka-03
+      10.1.50.176      gixel-bon-01
+      10.1.50.42       gixel-bon-02
+      10.1.50.81       gixel-bon-04
+      10.1.50.94       gixel-bon-03
     '';
   };
 
