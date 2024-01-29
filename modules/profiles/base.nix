@@ -21,6 +21,7 @@
     sshfs
     ncdu
     usbutils
+    yazi
     inputs.agenix.formatter.x86_64-linux
     inputs.agenix.packages.x86_64-linux.default
   ];
