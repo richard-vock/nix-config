@@ -2,6 +2,7 @@
   home-manager.users.richard = { pkgs, ...}: {
     programs.neovim = {
       enable = true;
+      defaultEditor = true;
       withNodeJs = true;
       plugins = with pkgs.vimPlugins; [
         copilot-vim
