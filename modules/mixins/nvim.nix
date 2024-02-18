@@ -17,6 +17,7 @@
         vim-nix
         vim-polyglot
         vim-svelte
+        leap-nvim
         #vim-oscyank
       ];
       extraPackages = with pkgs;
@@ -112,8 +113,8 @@
         let g:EasyMotion_do_mapping = 0
         map <Leader>j <Plug>(easymotion-j)
         map <Leader>k <Plug>(easymotion-k)
-        nmap s <Plug>(easymotion-overwin-f)
-        nmap f <Plug>(easymotion-overwin-f2)
+        " nmap s <Plug>(easymotion-overwin-f)
+        " nmap f <Plug>(easymotion-overwin-f2)
         nnoremap <silent> zj :call NextClosedFold('j')<cr>
         nnoremap <silent> zk :call NextClosedFold('k')<cr>
         function! NextClosedFold(dir)
@@ -147,6 +148,8 @@
               },
             },
           }
+
+          require('leap').create_default_mappings()
         EOF
       '';
     };
