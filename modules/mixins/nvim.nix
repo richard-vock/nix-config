@@ -18,6 +18,7 @@
         vim-polyglot
         vim-svelte
         leap-nvim
+        Shade-nvim
         #vim-oscyank
       ];
       extraPackages = with pkgs;
@@ -150,6 +151,11 @@
           }
 
           require('leap').create_default_mappings()
+
+          require('shade').setup({
+            overlay_opacity = 60,
+            opacity_step = 1,
+          })
         EOF
       '';
     };
