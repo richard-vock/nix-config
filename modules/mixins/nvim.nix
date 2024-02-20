@@ -6,19 +6,19 @@
       withNodeJs = true;
       plugins = with pkgs.vimPlugins; [
         copilot-vim
+        fzf-vim
         indentLine
         nvim-tree-lua
         nvim-web-devicons
         tcomment_vim
         vim-airline
         vim-airline-themes
-        vim-easymotion
-        vim-markdown
-        vim-nix
-        vim-polyglot
-        vim-svelte
         leap-nvim
         Shade-nvim
+        # vim-easymotion
+        vim-markdown
+        vim-polyglot
+        vim-svelte
         #vim-oscyank
       ];
       extraPackages = with pkgs;
