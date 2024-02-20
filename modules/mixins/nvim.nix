@@ -26,6 +26,7 @@
       ];
       extraConfig = ''
         " general
+        set mouse=
         set nocp
         filetype plugin on
         set hidden
