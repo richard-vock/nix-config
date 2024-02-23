@@ -24,5 +24,6 @@
     signal-desktop
     spotify
     blender
+    slack
   ];
 }
