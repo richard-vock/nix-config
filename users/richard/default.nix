@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/ssh/ssh_sk.nix
+    ./modules/yazi.nix
   ] ++ lib.optional (!headless) ./desktop.nix;
 
   home = {
