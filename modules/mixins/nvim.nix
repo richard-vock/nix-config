@@ -138,6 +138,8 @@
                     endif
                 endfunction
 
+                map <Leader><Leader> :Rg<CR>
+
                 lua << EOF
                     require'nvim-tree'.setup {
                         view = {
