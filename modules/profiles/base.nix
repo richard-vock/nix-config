@@ -3,9 +3,9 @@
     ../mixins/openssh.nix
     ../mixins/fonts.nix
     ../mixins/nvim.nix
+    ../mixins/git.nix
   ];
   environment.systemPackages = with pkgs; [
-    git
     lazygit
     file
     ripgrep
