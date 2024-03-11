@@ -17,6 +17,7 @@ with config.lib.stylix.colors.withHashtag;
     mixins-nodejs
     mixins-direnv
     mixins-restic
+    mixins-java
   ];
 
   nixpkgs.config.allowUnfree = true;
