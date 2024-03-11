@@ -32,6 +32,7 @@
       bashrcExtra = ''
         set -o vi
         export EDITOR=vim
+        export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
         # Makes `nix inate` as an alias of `nix shell`.
         nix() {
