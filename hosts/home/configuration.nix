@@ -12,6 +12,7 @@ with config.lib.stylix.colors.withHashtag;
     mixins-obs
     mixins-v4l2loopback
     mixins-docker
+    mixins-brother
     mixins-steam
     mixins-mysql
     mixins-nodejs
