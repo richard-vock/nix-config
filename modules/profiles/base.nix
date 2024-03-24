@@ -3,10 +3,10 @@
     ../mixins/openssh.nix
     ../mixins/fonts.nix
     ../mixins/nvim.nix
-    ../mixins/git.nix
   ];
   environment.systemPackages = with pkgs; [
     lazygit
+    difftastic
     file
     ripgrep
     fd
