@@ -2,6 +2,7 @@
 
 {
     programs.git = {
+        enable = true;
         extraConfig = {
             user = {
                 name = "Richard Vock";
@@ -17,9 +18,10 @@
                 frag = "#36A3D9";
             };
         };
-        difftastic = {
-            enable = true;
-            background = "dark";
-        };
+        # difftastic = {
+        #     enable = true;
+        #     background = "dark";
+        #     color = "always";
+        # };
     };
 }
