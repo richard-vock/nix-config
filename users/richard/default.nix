@@ -26,6 +26,7 @@
           format = "$shlvl ▼ ";
           threshold = 4;
         };
+        command_timeout = 2000;
       };
     };
     bash = {
