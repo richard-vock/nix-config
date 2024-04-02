@@ -36,7 +36,7 @@ with config.lib.stylix.colors.withHashtag;
       allowedTCPPorts = [ 55522 ];
       allowedUDPPorts = [ 55522 ];
     };
-    hostName = "sync";
+    hostName = "kawcloud";
     networkmanager.enable = true;
     useDHCP = false;
     interfaces = {
