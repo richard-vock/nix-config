@@ -10,7 +10,7 @@
     utils = {
       url = "github:gytis-ivaskevicius/flake-utils-plus";
     };
-    stylix.url = "github:richard-vock/stylix";
+    stylix.url = "github:danth/stylix";
     base16-schemes.url = "github:tinted-theming/base16-schemes";
     base16-schemes.flake = false;
   };
