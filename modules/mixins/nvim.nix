@@ -6,32 +6,32 @@
             withNodeJs = true;
             plugins = with pkgs.vimPlugins; [
                 copilot-vim
-                    fzf-vim
-                    indentLine
-                    nvim-tree-lua
-                    nvim-web-devicons
-                    tcomment_vim
-                    vim-airline
-                    vim-airline-themes
-                    leap-nvim
-                    Shade-nvim
-                    # vim-easymotion
-                    vim-markdown
-                    nvim-treesitter
-                    nvim-treesitter-parsers.java
-                    nvim-treesitter-parsers.javascript
-                    nvim-treesitter-parsers.nix
-                    nvim-treesitter-parsers.python
-                    nvim-treesitter-parsers.svelte
-                    nvim-treesitter-parsers.typescript
-                    nvim-treesitter-parsers.tsx
-                    playground
-                    # { plugin = vim-polyglot;
-                    #   config = "let g:polyglot_disabled = ['autoindent']";
-                    # }
-                    vim-svelte
-                    #vim-oscyank
-                    ];
+                fzf-vim
+                indentLine
+                nvim-tree-lua
+                nvim-web-devicons
+                tcomment_vim
+                vim-airline
+                vim-airline-themes
+                leap-nvim
+                Shade-nvim
+                # vim-easymotion
+                vim-markdown
+                nvim-treesitter
+                nvim-treesitter-parsers.java
+                nvim-treesitter-parsers.javascript
+                nvim-treesitter-parsers.nix
+                nvim-treesitter-parsers.python
+                nvim-treesitter-parsers.svelte
+                nvim-treesitter-parsers.typescript
+                nvim-treesitter-parsers.tsx
+                playground
+                # { plugin = vim-polyglot;
+                #   config = "let g:polyglot_disabled = ['autoindent']";
+                # }
+                vim-svelte
+                #vim-oscyank
+            ];
             extraConfig = ''
                 " general
                 set mouse=
