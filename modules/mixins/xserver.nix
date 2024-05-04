@@ -15,9 +15,11 @@
         desktopManager.xterm.enable = false;
         windowManager.i3.enable = true;
 
-        xkb.layout = "us";
-        xkb.variant = "eurosign:e,caps:escape";
-        xkb.options = "intl";
+        xkb = {
+            layout = "us";
+            options = "eurosign:e,caps:escape";
+            variant = "intl";
+        };
     };
 
     services.displayManager = {
