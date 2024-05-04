@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  terminal = "${pkgs.kitty}/bin/kitty";
+  terminal = "${pkgs.alacritty}/bin/alacritty";
   bemenu = "${pkgs.bemenu}/bin/bemenu-run -H 16 -p execute: --fn 'Hack Nerd 10' --tf '#FFFFFF' --scf '#FFFFFF' --ff '#FFFFFF' --tb ''#FFFFFF --nf '#FFFFFF' --hf '#FFFFFF' --nb '#000000' --tb '#000000' --fb '#000000'";
   launcher = bemenu;
   i3lockcmd = "${pkgs.swaylock}/bin/i3lock -c '#232323'";
