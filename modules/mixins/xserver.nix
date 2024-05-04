@@ -13,12 +13,16 @@
         '';
 
         desktopManager.xterm.enable = false;
-        displayManager.defaultSession = "none+i3";
         windowManager.i3.enable = true;
 
-        layout = "us";
-        xkbOptions = "eurosign:e,caps:escape";
-        xkbVariant = "intl";
+        xkb.layout = "us";
+        xkb.variant = "eurosign:e,caps:escape";
+        xkb.options = "intl";
+    };
+
+    services.displayManager = {
+        enable = true;
+        defaultSession = "none+i3";
     };
   };
 }
