@@ -14,10 +14,26 @@
             sort_reverse = false;
             sort_dir_first = true;
         };
+        open = {
+            rules = [
+                {
+                    mime = "application/pdf";
+                    use = "evince";
+                }
+            ];
+        };
         opener = {
+            evince = [
+                {
+                    run = "evince \"$@\"";
+                    orphan = true;
+                    block = false;
+                    desc = "Open PDF";
+                }
+            ];
             play = [
                 {
-                    exec = "vlc \"$@\"";
+                    run = "vlc \"$@\"";
                     orphan = true;
                     block = false;
                     desc = "Play video";
