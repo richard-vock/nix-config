@@ -131,9 +131,9 @@ in
     bars = {
       default = {
         blocks = [
-          {
-            block = "music";
-          }
+          # {
+          #   block = "music";
+          # }
           {
             block = "time";
             interval = 1;
