@@ -41,6 +41,17 @@
           ];
           specialArgs = { inherit inputs; };
         };
+        tuxedo = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            utils.nixosModules.autoGenFromInputs
+            home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
+            agenix.nixosModules.default
+            ./hosts/tuxedo/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
         sync = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
