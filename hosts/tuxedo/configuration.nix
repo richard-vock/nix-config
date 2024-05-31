@@ -6,6 +6,7 @@ with config.lib.stylix.colors.withHashtag;
   imports = with inputs.self.nixosModules; [
     ./hardware-configuration.nix
     profiles-base
+    ./xserver.nix
     profiles-desktop
     users-richardvock
     mixins-steam

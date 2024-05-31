@@ -7,6 +7,7 @@ with config.lib.stylix.colors.withHashtag;
     ./disks.nix
     ./hardware-configuration.nix
     profiles-base
+    ./xserver.nix
     profiles-desktop
     users-richardvock
     mixins-obs
