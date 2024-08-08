@@ -10,6 +10,7 @@
     file
     ripgrep
     fd
+    fzf
     unzip
     btop
     pciutils
