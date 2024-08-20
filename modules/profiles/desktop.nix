@@ -26,5 +26,6 @@
     blender
     slack
     remmina
+    httpie
   ];
 }
