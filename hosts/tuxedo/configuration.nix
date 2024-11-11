@@ -11,6 +11,7 @@ with config.lib.stylix.colors.withHashtag;
     users-richardvock
     mixins-steam
     mixins-direnv
+    mixins-quickemu
   ];
 
   nixpkgs.config.allowUnfree = true;
