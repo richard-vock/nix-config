@@ -20,10 +20,10 @@ with config.lib.stylix.colors.withHashtag;
       };
 
       sizes = {
-        desktop = 11;
-        terminal = 11;
-        applications = 12;
-        popups = 11;
+        desktop = 8;
+        terminal = 8;
+        applications = 8;
+        popups = 8;
       };
     };
   };

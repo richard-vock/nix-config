@@ -24,7 +24,7 @@ in
         trayOutput = "DP-2";
         fonts = {
           names = [ "Hack Nerd" ];
-          size = 11.0;
+          size = 7.0;
         };
         statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-default.toml";
         extraConfig = "height 25";
@@ -48,15 +48,15 @@ in
       workspaceOutputAssign = [
         {
           output = "HDMI-0";
-          workspace = "1";
+          workspace = "3";
         }
-        {
-          output = "DP-0";
-          workspace = "2";
-        }
+        # {
+        #   output = "DP-0";
+        #   workspace = "2";
+        # }
         {
           output = "DP-2";
-          workspace = "3";
+          workspace = "2";
         }
       ];
       focus.followMouse = false;
