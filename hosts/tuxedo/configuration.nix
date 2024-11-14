@@ -53,6 +53,7 @@ with config.lib.stylix.colors.withHashtag;
     extraHosts = ''
       10.20.0.21      rpi5
       10.20.0.113     dminds-bon-03
+      3.70.185.19     mycastle55.chickenkiller.com
     '';
   };
 
