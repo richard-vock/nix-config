@@ -25,5 +25,6 @@
     blender
     slack
     remmina
+    wireguard-tools
   ];
 }
