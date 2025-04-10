@@ -22,6 +22,9 @@
     ncdu
     usbutils
     yazi
+    arp-scan
+    nmap
+    choose
     inputs.agenix.formatter.x86_64-linux
     inputs.agenix.packages.x86_64-linux.default
   ];
