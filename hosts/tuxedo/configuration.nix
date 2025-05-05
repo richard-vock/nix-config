@@ -55,6 +55,8 @@ with config.lib.stylix.colors.withHashtag;
       10.20.0.21      rpi5
       10.21.1.112     dminds-bon-02
       10.21.1.113     dminds-bon-03
+      10.21.1.112     dminds-bon-02.int.dminds.de
+      10.21.1.113     dminds-bon-03.int.dminds.de
       3.70.185.19     mycastle55.chickenkiller.com
     '';
   };
