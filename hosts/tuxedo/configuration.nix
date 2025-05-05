@@ -12,6 +12,7 @@ with config.lib.stylix.colors.withHashtag;
     mixins-steam
     mixins-direnv
     mixins-quickemu
+    mixins-brother
   ];
 
   nixpkgs.config.allowUnfree = true;
