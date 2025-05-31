@@ -20,6 +20,14 @@
                     mime = "application/pdf";
                     use = "evince";
                 }
+                {
+                    mime = "video/*";
+                    use = "vlc";
+                }
+                {
+                    mime = "image/*";
+                    use = "imv";
+                }
             ];
         };
         opener = {
@@ -37,6 +45,14 @@
                     orphan = true;
                     block = false;
                     desc = "Play video";
+                }
+            ];
+            imv = [
+                {
+                    run = "imv \"$@\"";
+                    orphan = true;
+                    block = false;
+                    desc = "View image";
                 }
             ];
         };
