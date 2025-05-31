@@ -91,7 +91,7 @@ with config.lib.stylix.colors.withHashtag;
       efi = {
         canTouchEfiVariables = true;
       };
-      timeout = 3000;
+      timeout = lib.mkForce 3000;
     };
   };
 
