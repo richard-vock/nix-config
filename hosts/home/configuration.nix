@@ -61,6 +61,7 @@ with config.lib.stylix.colors.withHashtag;
     extraHosts = ''
       10.20.0.21      rpi5
       10.20.0.113     dminds-bon-03
+      10.20.0.113     dminds-bon-03.int.dminds.de
     '';
   };
 
