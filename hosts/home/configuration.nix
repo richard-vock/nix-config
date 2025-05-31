@@ -105,7 +105,8 @@ with config.lib.stylix.colors.withHashtag;
   time.timeZone = "Europe/Berlin";
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
+    nvidia.open = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
     nvidia.modesetting.enable = true;
   };
