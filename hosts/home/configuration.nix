@@ -20,6 +20,7 @@ with config.lib.stylix.colors.withHashtag;
     mixins-restic
     mixins-java
     mixins-qemu
+    mixins-codex
   ];
 
   nixpkgs.config.allowUnfree = true;
