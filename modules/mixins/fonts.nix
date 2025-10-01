@@ -9,9 +9,9 @@
     jetbrains-mono
     powerline-fonts
     gelasio
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
     iosevka
-    noto-fonts noto-fonts-cjk noto-fonts-emoji
+    noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
     source-code-pro
     ttf_bitstream_vera
     font-awesome

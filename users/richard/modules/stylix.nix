@@ -10,7 +10,7 @@ with config.lib.stylix.colors.withHashtag;
       serif = config.stylix.fonts.monospace;
 
       monospace = {
-        package = pkgs.nerdfonts;
+        package = pkgs.nerd-fonts.hack;
         name = "Hack Nerd Font";
       };
 
@@ -33,4 +33,5 @@ with config.lib.stylix.colors.withHashtag;
   xsession.windowManager.i3.config.colors.focused.text = lib.mkForce base00;
   xsession.windowManager.i3.config.colors.focused.border = lib.mkForce base0D;
   xsession.windowManager.i3.config.colors.focused.childBorder = lib.mkForce base0D;
+  xsession.windowManager.i3.config.colors.focused.indicator = lib.mkForce base0D;
 }
