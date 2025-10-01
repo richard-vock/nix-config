@@ -27,5 +27,6 @@
     slack
     remmina
     httpie
+    codex
   ];
 }
