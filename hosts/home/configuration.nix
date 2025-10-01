@@ -107,9 +107,9 @@ with config.lib.stylix.colors.withHashtag;
     opengl.enable = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
     nvidia.modesetting.enable = true;
+    nvidia.open = false;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
   system.stateVersion = "22.11";
 }
-
