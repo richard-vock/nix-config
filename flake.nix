@@ -13,6 +13,10 @@
     stylix.url = "github:danth/stylix";
     base16-schemes.url = "github:tinted-theming/base16-schemes";
     base16-schemes.flake = false;
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

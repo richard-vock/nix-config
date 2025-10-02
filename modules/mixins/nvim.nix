@@ -1,178 +1,143 @@
-{
-    home-manager.users.richard = { pkgs, ...}: {
-        programs.neovim = {
-            enable = true;
-            defaultEditor = true;
-            withNodeJs = true;
-            plugins = with pkgs.vimPlugins; [
-                copilot-vim
-                fzf-vim
-                indentLine
-                nvim-tree-lua
-                nvim-web-devicons
-                tcomment_vim
-                vim-airline
-                vim-airline-themes
-                leap-nvim
-                Shade-nvim
-                # vim-easymotion
-                vim-markdown
-                nvim-treesitter
-                nvim-treesitter-parsers.java
-                nvim-treesitter-parsers.javascript
-                nvim-treesitter-parsers.nix
-                nvim-treesitter-parsers.python
-                nvim-treesitter-parsers.svelte
-                nvim-treesitter-parsers.typescript
-                nvim-treesitter-parsers.tsx
-                playground
-                # { plugin = vim-polyglot;
-                #   config = "let g:polyglot_disabled = ['autoindent']";
-                # }
-                vim-svelte
-                #vim-oscyank
-            ];
-            extraConfig = ''
-                " general
-                set mouse=
-                set nocp
-                filetype plugin on
-                set hidden
-                set diffopt+=internal,algorithm:patience
-                set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-                set backspace=2
+{ imports, inputs, pkgs, ... }: {
+    imports = [ inputs.nvf.nixosModules.default ];
 
-                " swap files
-                set noswapfile
+    programs.nvf = {
+        enable = true;
+        settings = {
+            vim = {
+                viAlias = false;
+                vimAlias = true;
+                lsp = {
+                  enable = true;
+                };
 
-                " clipboard
-                set clipboard=unnamedplus
-                "vmap <C-c> y:OSCYank<cr>
+                globals = {
+                    mapleader = " ";
+                    ayucolor = "dark";
+                };
 
-                " visual
-                let &titlestring = @%
-                set title
-                set number
-                set hlsearch
-                set nowrap
-                set expandtab
+                options = {
+                    shiftwidth = 4;
+                    tabstop = 4;
+                    softtabstop = 0;
+                    mouse = "";
+                };
 
-                " indentation
-                set shiftwidth=4
-                set tabstop=4
-                set softtabstop=4
-                set expandtab
+                clipboard = {
+                    enable = true;
+                    registers = "unnamedplus";
+                    providers.xclip.enable = true;
+                };
 
-                " conceal fix
-                let g:vim_json_conceal=0
-                let g:vim_markdown_conceal=0
+                visuals.nvim-web-devicons.enable = true;
 
-                " folding and indentation
-                set foldmethod=syntax
-                set foldcolumn=4
-                "au BufNewFile,BufRead *.py
-                "  \ set foldmethod=indent |
-                "  \ set expandtab |
-                "  \ set autoindent |
-                "  \ set fileformat=unix
+                filetree.nvimTree = {
+                    enable = true;
+                    openOnSetup = false;
+                    setupOpts = {
+                        filters = {
+                            dotfiles = false;
+                            git_ignored = true;
+                        };
+                        git.enable = true;
+                    };
+                    mappings = {
+                        toggle = "<leader>e";
+                        refresh = "<leader>r";
+                    };
+                    setupOpts.view.width = 40;
+                };
 
-                " keybindings
-                map <C-Space> :bn<CR>
-                map <C-BS> :bp<CR>
-                map <C-@> :bn<CR>
-                map <C-H> :bp<CR>
-                map <C-TAB> <C-w>p
-                nnoremap <C-J> <C-W><C-J>
-                nnoremap <C-K> <C-W><C-K>
-                nnoremap <C-L> <C-W><C-L>
-                "nnoremap <C-H> <C-W><C-H>
-                map <Space> @q
-                map <Insert> "*p
+                autocomplete = {
+                    nvim-cmp = {
+                        enable = true;
+                        mappings = {
+                            confirm = "<CR>";
+                            complete = "<C-Space>";
+                        };
+                    };
+                };
 
-                map J <C-d>
-                map K <C-u>
+                assistant.copilot = {
+                    enable = true;
+                    cmp.enable = true;
+                };
 
-                map <F1> zR
-                map <F2> zM
-                map <F3> zr
+                languages = {
+                    ts = {
+                        enable = true;
+                        format = {
+                            enable = true;
+                            type = "prettier";
+                        };
+                        lsp = {
+                            enable = true;
+                        };
+                        treesitter = {
+                            enable = true;
+                        };
+                        extensions.ts-error-translator.enable = true;
+                    };
+                    # python = {
+                    #     enable = true;
+                    #     lsp = true;
+                    #     formatter.black.enable = true;
+                    #     linter.flake8.enable = true;
+                    # };
+                    # lua = {
+                    #     enable = true;
+                    #     lsp = true;
+                    #     formatter.stylua.enable = true;
+                    # };
+                    # nix = {
+                    #     enable = true;
+                    #     lsp = true;
+                    #     formatter.nixpkgs-fmt.enable = true;
+                    # };
+                    # rust = {
+                    #     enable = true;
+                    #     lsp = true;
+                    #     formatter.rustfmt.enable = true;
+                    #     linter.clippy.enable = true;
+                    # };
+                    # markdown = {
+                    #     enable = true;
+                    #     lsp = true;
+                    # };
+                };
 
-                :command! BW :bn|:bd#
-                map <F4> :BW<CR>
+                formatter = {
+                    conform-nvim = {
+                        enable = true;
+                    };      
+                };
 
-                map <F5> mA
-                map <F6> `A
-                map <F8> :cclose<CR>
+                lsp = {
+                    formatOnSave = true;
+                };
 
-                " airline
-                set laststatus=2
-                let g:airline#extensions#tabline#enabled = 1
-                let g:airline_theme = 'ayu_mirage'
+                terminal.toggleterm = {
+                    enable = true;
+                    lazygit = {
+                        enable = true;
+                    };
+                };
 
-                " tcomment
-                let g:tcomment_opleader1 = '<Leader>c'
+                extraPlugins = with pkgs.vimPlugins; {
+                    ayu-vim = {
+                        package = ayu-vim;
+                    };
+                };
 
-                " nvim-tree-lua
-                nnoremap <C-n> :NvimTreeToggle<CR>
-                nnoremap <leader>r :NvimTreeRefresh<CR>
-                nnoremap <leader>n :NvimTreeFindFile<CR>
+                luaConfigRC.ayu = inputs.nvf.lib.nvim.dag.entryAfter ["theme"] ''
+                    vim.cmd.colorscheme("ayu")
+                '';
 
-                " easymotion
-                let g:EasyMotion_do_mapping = 0
-                map <Leader>j <Plug>(easymotion-j)
-                map <Leader>k <Plug>(easymotion-k)
-                " nmap s <Plug>(easymotion-overwin-f)
-                " nmap f <Plug>(easymotion-overwin-f2)
-                nnoremap <silent> zj :call NextClosedFold('j')<cr>
-                nnoremap <silent> zk :call NextClosedFold('k')<cr>
-                function! NextClosedFold(dir)
-                    let cmd = 'norm!z' . a:dir
-                    let view = winsaveview()
-                    let [l0, l, open] = [0, view.lnum, 1]
-                    while l != l0 && open
-                        exe cmd
-                        let [l0, l] = [l, line('.')]
-                        let open = foldclosed(l) < 0
-                    endwhile
-                    if open
-                        call winrestview(view)
-                    endif
-                endfunction
-
-                map <Leader><Leader> :Rg<CR>
-
-                lua << EOF
-                    require'nvim-tree'.setup {
-                        view = {
-                            width = 40,
-                        },
-                         renderer = {
-                             icons = {
-                                 show = {
-                                     git = true,
-                                     folder = true,
-                                     file = true,
-                                     folder_arrow = true,
-                                     modified = true,
-                                 },
-                             },
-                         },
-                    }
-
-                    require('leap').create_default_mappings()
-                    
-                    require('shade').setup({
-                        overlay_opacity = 60,
-                        opacity_step = 1,
-                    })
-                    
-                    require'nvim-treesitter.configs'.setup {
-                        highlight = {
-                            enable = true,
-                        },
-                    }
-                    vim.api.nvim_set_hl(0, "@variable", { link = "Normal" })
-                EOF
-            '';
+                maps.normal = {
+                    K.action = "<C-u>";
+                    J.action = "<C-d>";
+                };
+            };
         };
     };
 }
