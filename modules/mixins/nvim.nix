@@ -31,6 +31,22 @@
 
                 visuals.nvim-web-devicons.enable = true;
 
+                tabline.nvimBufferline = {
+                    enable = true;
+                    setupOpts = {
+                        options = {
+                            show_buffer_close_icons = false;
+                            show_buffer_icons = false;
+                            show_close_icon = false;
+                            show_tab_indicators = false;
+                        };
+                    };
+                };
+
+                statusline.lualine = {
+                    enable = true;
+                };
+
                 filetree.nvimTree = {
                     enable = true;
                     openOnSetup = false;
