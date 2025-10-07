@@ -151,6 +151,8 @@
                 '';
 
                 maps.normal = {
+                    H.action = ":bp<CR>";
+                    L.action = ":bn<CR>";
                     K.action = "<C-u>";
                     J.action = "<C-d>";
                 };
