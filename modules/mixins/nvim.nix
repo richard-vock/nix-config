@@ -1,162 +1,91 @@
-{ imports, inputs, pkgs, ... }: {
-    imports = [ inputs.nvf.nixosModules.default ];
+{ inputs, pkgs, ... }:
+let
+  nixvimModulePaths = [
+    ./nixvim/keymaps.nix
+    ./nixvim/treesitter.nix
+    ./nixvim/toggleterm.nix
+    ./nixvim/themes.nix
+    ./nixvim/lazygit.nix
+    ./nixvim/lualine.nix
+    # ./nixvim/dashboard.nix
+    ./nixvim/bufferline.nix
+    ./nixvim/snacks.nix
+    ./nixvim/gitsigns.nix
+    ./nixvim/whichkey.nix
+    ./nixvim/hlchunk.nix
+    # ./nixvim/yanky.nix
+    ./nixvim/autopairs.nix
+    ./nixvim/blink-cmp.nix
+    # ./nixvim/tmux-navigator.nix
+    ./nixvim/smear-cursor.nix
+    ./nixvim/lsp/conform.nix
+    ./nixvim/lsp/fidget.nix
+    ./nixvim/lsp/lsp.nix
+    # ./nixvim/nix-develop.nix
+    # ./nixvim/kulala.nix
+    ./nixvim/aerial.nix
+    # ./nixvim/autosave.nix
+    ./nixvim/notify.nix
+    ./nixvim/barbecue.nix
+    ./nixvim/noice.nix
+    ./nixvim/neoscroll.nix
+    ./nixvim/markview.nix
+    # ./nixvim/zen-mode.nix
+    ./nixvim/yazi.nix
+    ./nixvim/wtf.nix
+    # ./nixvim/windsurf-vim.nix if you want to use this plugin uncomment it and run nix develop --impure
+    ./nixvim/ts-comments.nix
+    # ./nixvim/timerly.nix
+    ./nixvim/treesj.nix
+    ./nixvim/web-devicons.nix
+  ];
 
-    programs.nvf = {
-        enable = true;
-        settings = {
-            vim = {
-                viAlias = false;
-                vimAlias = true;
-                lsp = {
-                  enable = true;
-                };
-
-                globals = {
-                    mapleader = " ";
-                    ayucolor = "dark";
-                };
-
-                options = {
-                    shiftwidth = 4;
-                    tabstop = 4;
-                    softtabstop = 0;
-                    mouse = "";
-                };
-
-                clipboard = {
-                    enable = true;
-                    registers = "unnamedplus";
-                    providers.xclip.enable = true;
-                };
-
-                visuals.nvim-web-devicons.enable = true;
-
-                tabline.nvimBufferline = {
-                    enable = true;
-                    setupOpts = {
-                        options = {
-                            show_buffer_close_icons = false;
-                            show_buffer_icons = false;
-                            show_close_icon = false;
-                            show_tab_indicators = false;
-                        };
-                    };
-                };
-
-                statusline.lualine = {
-                    enable = true;
-                };
-
-                filetree.nvimTree = {
-                    enable = true;
-                    openOnSetup = false;
-                    setupOpts = {
-                        actions.open_file.window_picker.enable = true;
-                        filters = {
-                            dotfiles = false;
-                            git_ignored = true;
-                        };
-                        git.enable = true;
-                    };
-                    mappings = {
-                        toggle = "<leader>e";
-                        refresh = "<leader>r";
-                    };
-                    setupOpts.view.width = 40;
-                };
-
-                autocomplete = {
-                    nvim-cmp = {
-                        enable = true;
-                        mappings = {
-                            confirm = "<CR>";
-                            complete = "<C-Space>";
-                        };
-                    };
-                };
-
-                assistant.copilot = {
-                    enable = true;
-                    cmp.enable = true;
-                };
-
-                languages = {
-                    ts = {
-                        enable = true;
-                        format = {
-                            enable = true;
-                            type = "prettier";
-                        };
-                        lsp = {
-                            enable = true;
-                        };
-                        treesitter = {
-                            enable = true;
-                        };
-                        extensions.ts-error-translator.enable = true;
-                    };
-                    # python = {
-                    #     enable = true;
-                    #     lsp = true;
-                    #     formatter.black.enable = true;
-                    #     linter.flake8.enable = true;
-                    # };
-                    # lua = {
-                    #     enable = true;
-                    #     lsp = true;
-                    #     formatter.stylua.enable = true;
-                    # };
-                    # nix = {
-                    #     enable = true;
-                    #     lsp = true;
-                    #     formatter.nixpkgs-fmt.enable = true;
-                    # };
-                    # rust = {
-                    #     enable = true;
-                    #     lsp = true;
-                    #     formatter.rustfmt.enable = true;
-                    #     linter.clippy.enable = true;
-                    # };
-                    # markdown = {
-                    #     enable = true;
-                    #     lsp = true;
-                    # };
-                };
-
-                formatter = {
-                    conform-nvim = {
-                        enable = true;
-                    };      
-                };
-
-                lsp = {
-                    formatOnSave = true;
-                };
-
-                terminal.toggleterm = {
-                    enable = true;
-                    lazygit = {
-                        enable = true;
-                    };
-                };
-
-                extraPlugins = with pkgs.vimPlugins; {
-                    ayu-vim = {
-                        package = ayu-vim;
-                    };
-                };
-
-                luaConfigRC.ayu = inputs.nvf.lib.nvim.dag.entryAfter ["theme"] ''
-                    vim.cmd.colorscheme("ayu")
-                '';
-
-                maps.normal = {
-                    H.action = ":bp<CR>";
-                    L.action = ":bn<CR>";
-                    K.action = "<C-u>";
-                    J.action = "<C-d>";
-                };
-            };
-        };
+  wrapNixvimModule = path: { pkgs, ... }@args:
+    let
+      raw = import path;
+      moduleConfig = if builtins.isFunction raw then raw args else raw;
+    in {
+      config.programs.nixvim = moduleConfig;
     };
+in {
+  imports =
+    [ inputs.nixvim.nixosModules.nixvim ]
+    ++ builtins.map wrapNixvimModule nixvimModulePaths;
+
+  config.programs.nixvim = {
+    enable = true;
+
+    globals = {
+      mapleader = " ";
+    };
+
+    opts = {
+      number = true;
+      # colorcolumn = "100";
+      relativenumber = false;
+      shiftwidth = 4;
+      tabstop = 4;
+      wrap = false;
+      swapfile = false;
+      backup = false;
+      undofile = true;
+      hlsearch = false;
+      incsearch = true;
+      termguicolors = true;
+      scrolloff = 8;
+      signcolumn = "yes";
+      updatetime = 50;
+      foldlevelstart = 99;
+    };
+
+    extraPackages = with pkgs; [
+      nerd-fonts.hack
+      fzf
+      ripgrep
+      fd
+      nixfmt-rfc-style
+      shellcheck
+      eslint_d
+    ];
+  };
 }
