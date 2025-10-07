@@ -35,6 +35,7 @@
                     enable = true;
                     openOnSetup = false;
                     setupOpts = {
+                        actions.open_file.window_picker.enable = true;
                         filters = {
                             dotfiles = false;
                             git_ignored = true;
