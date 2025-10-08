@@ -9,6 +9,7 @@ let
     ./nixvim/lualine.nix
     ./nixvim/bufferline.nix
     ./nixvim/snacks.nix
+    ./nixvim/nvim-tree.nix
     ./nixvim/gitsigns.nix
     ./nixvim/whichkey.nix
     ./nixvim/hlchunk.nix

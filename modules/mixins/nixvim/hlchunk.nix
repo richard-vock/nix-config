@@ -18,6 +18,7 @@
         exclude_filetypes = {
           lazyterm = true;
           neo-tree = true;
+          nvim-tree = true;
         };
         style = {
           fg = "#91bef0";

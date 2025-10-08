@@ -6,15 +6,6 @@
   };
   keymaps = [
     {
-      key = "<leader>e";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.explorer()<CR>";
-      options = {
-        silent = true;
-        noremap = true;
-      };
-    }
-    {
       key = "<leader>fb";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.buffers()<CR>";

@@ -7,7 +7,7 @@
         globalstatus = true;
         extensions = [
           "fzf"
-          "neo-tree"
+          "nvim-tree"
         ];
         disabledFiletypes = {
           statusline = [
@@ -15,7 +15,7 @@
             "alpha"
           ];
         };
-        theme = "catppuccin";
+        theme = "ayu";
       };
       sections = {
         lualine_a = [
@@ -96,4 +96,3 @@
     };
   };
 }
-
