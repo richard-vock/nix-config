@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 with config.lib.stylix.colors.withHashtag;
 
@@ -72,16 +78,18 @@ with config.lib.stylix.colors.withHashtag;
     configDir = "/data/.config/syncthing";
     overrideDevices = true;
     settings.devices = {
-      "sync" = { id = "2SLDIR7-EXPR4LU-QPA7EPX-HVIJREX-6C4KX2P-XW6SKKB-OCMPRYN-O7SIZQK"; };
+      "sync" = {
+        id = "2SLDIR7-EXPR4LU-QPA7EPX-HVIJREX-6C4KX2P-XW6SKKB-OCMPRYN-O7SIZQK";
+      };
     };
   };
 
   services = {
-    logind.killUserProcesses = true;
+    logind.settings.Login.KillUserProcesses = true;
   };
 
   boot = {
-    blacklistedKernelModules = ["nouveau"];
+    blacklistedKernelModules = [ "nouveau" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -104,7 +112,7 @@ with config.lib.stylix.colors.withHashtag;
   time.timeZone = "Europe/Berlin";
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
     nvidia.modesetting.enable = true;
     nvidia.open = false;
