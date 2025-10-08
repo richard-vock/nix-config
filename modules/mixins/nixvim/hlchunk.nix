@@ -20,12 +20,11 @@
           neo-tree = true;
           nvim-tree = true;
         };
-        style = {
-          fg = "#91bef0";
-        };
+        style = "#45475a";
         use_treesitter = true;
       };
       indent = {
+        enable = true;
         chars = [
           "│"
         ];
@@ -33,13 +32,11 @@
           lazyterm = true;
           neo-tree = true;
         };
-        style = {
-          fg = "#45475a";
-        };
+        style = "#45475a";
         use_treesitter = false;
       };
       line_num = {
-        style = "#91bef0";
+        style = "#45475a";
         use_treesitter = true;
       };
     };
