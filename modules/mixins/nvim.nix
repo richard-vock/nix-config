@@ -7,7 +7,6 @@ let
     ./nixvim/themes.nix
     ./nixvim/lazygit.nix
     ./nixvim/lualine.nix
-    # ./nixvim/dashboard.nix
     ./nixvim/bufferline.nix
     ./nixvim/snacks.nix
     ./nixvim/gitsigns.nix
@@ -16,7 +15,6 @@ let
     # ./nixvim/yanky.nix
     ./nixvim/autopairs.nix
     ./nixvim/blink-cmp.nix
-    # ./nixvim/tmux-navigator.nix
     ./nixvim/smear-cursor.nix
     ./nixvim/lsp/conform.nix
     ./nixvim/lsp/fidget.nix
@@ -30,27 +28,27 @@ let
     ./nixvim/noice.nix
     ./nixvim/neoscroll.nix
     ./nixvim/markview.nix
-    # ./nixvim/zen-mode.nix
     ./nixvim/yazi.nix
     ./nixvim/wtf.nix
     # ./nixvim/windsurf-vim.nix if you want to use this plugin uncomment it and run nix develop --impure
     ./nixvim/ts-comments.nix
-    # ./nixvim/timerly.nix
     ./nixvim/treesj.nix
     ./nixvim/web-devicons.nix
   ];
 
-  wrapNixvimModule = path: { pkgs, ... }@args:
+  wrapNixvimModule =
+    path:
+    { pkgs, ... }@args:
     let
       raw = import path;
       moduleConfig = if builtins.isFunction raw then raw args else raw;
-    in {
+    in
+    {
       config.programs.nixvim = moduleConfig;
     };
-in {
-  imports =
-    [ inputs.nixvim.nixosModules.nixvim ]
-    ++ builtins.map wrapNixvimModule nixvimModulePaths;
+in
+{
+  imports = [ inputs.nixvim.nixosModules.nixvim ] ++ builtins.map wrapNixvimModule nixvimModulePaths;
 
   config.programs.nixvim = {
     enable = true;
