@@ -2,6 +2,11 @@
   plugins.nvim-tree = {
     enable = true;
     autoLoad = true;
+    settings = {
+      view = {
+        width = 40;
+      };
+    };
   };
   keymaps = [
     {
