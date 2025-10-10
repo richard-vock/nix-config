@@ -122,6 +122,10 @@
           #   action = "hover";
           #   desc = "Hover";
           # };
+          "<leader>ca" = {
+            action = "code_action";
+            desc = "Code Action";
+          };
           "<leader>cw" = {
             action = "workspace_symbol";
             desc = "Workspace Symbol";
