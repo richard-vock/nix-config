@@ -2,6 +2,7 @@
 let
   nixvimModulePaths = [
     ./nixvim/keymaps.nix
+    ./nixvim/bufdelete.nix
     ./nixvim/treesitter.nix
     ./nixvim/toggleterm.nix
     ./nixvim/themes.nix
