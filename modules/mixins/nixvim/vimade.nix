@@ -1,0 +1,5 @@
+{
+  plugins.vimade = {
+    enable = true;
+  };
+}
