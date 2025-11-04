@@ -17,18 +17,19 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , nixpkgs2211
-    , nixinate
-    , nixos-hardware
-    , home-manager
-    , agenix
-    , stylix
-    , base16-schemes
-    , utils
-    , ...
-    } @ inputs: {
+    {
+      self,
+      nixpkgs,
+      nixpkgs2211,
+      nixos-hardware,
+      home-manager,
+      agenix,
+      stylix,
+      base16-schemes,
+      utils,
+      ...
+    }@inputs:
+    {
       nixosModules = import ./modules { lib = nixpkgs.lib; };
       nixosConfigurations = {
         home = nixpkgs.lib.nixosSystem {

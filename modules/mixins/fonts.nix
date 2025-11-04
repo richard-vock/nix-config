@@ -1,9 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   fonts.enableDefaultPackages = true;
   fonts.packages = with pkgs; [
-#    corefonts
-    fira-code fira-code-symbols
+    #    corefonts
+    fira-code
+    fira-code-symbols
     terminus_font
     terminus_font_ttf
     jetbrains-mono
@@ -11,7 +17,9 @@
     gelasio
     nerd-fonts.hack
     iosevka
-    noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
     source-code-pro
     ttf_bitstream_vera
     font-awesome

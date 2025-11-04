@@ -14,19 +14,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXROOT";
-      fsType = "ext4";
+    { device = "/dev/mapper/root";
+      fsType = "btrfs";
     };
 
-  boot.initrd.luks.devices."root" = {
-    device = "/dev/disk/by-uuid/3c5588fb-c450-4ef5-a443-03cf1928bdd1";
-    allowDiscards = true;
-  };
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/817c3ffa-7f9b-40aa-9f42-77e252c11962";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/NIXBOOT";
+    { device = "/dev/disk/by-uuid/A706-2793";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];

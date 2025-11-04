@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -20,27 +25,29 @@ in
     enable = true;
     config = rec {
       inherit terminal;
-      bars = [{
-        trayOutput = "DP-2";
-        fonts = {
-          names = [ "Hack Nerd" ];
-          size = 11.0;
-        };
-        statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-default.toml";
-        extraConfig = "height 25";
-        colors = {
-          focusedWorkspace = {
-            background = "#59c2ff";
-            text = "#000000";
-            border = "#000000";
+      bars = [
+        {
+          trayOutput = "DP-2";
+          fonts = {
+            names = [ "Hack Nerd" ];
+            size = 11.0;
           };
-          # activeWorkspace = {
-          #   background = "#59c2ff";
-          #   text = "#000000";
-          #   border = "#000000";
-          # };
-        };
-      }];
+          statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-default.toml";
+          extraConfig = "height 25";
+          colors = {
+            focusedWorkspace = {
+              background = "#59c2ff";
+              text = "#000000";
+              border = "#000000";
+            };
+            # activeWorkspace = {
+            #   background = "#59c2ff";
+            #   text = "#000000";
+            #   border = "#000000";
+            # };
+          };
+        }
+      ];
       window = {
         hideEdgeBorders = "both";
       };
@@ -61,9 +68,14 @@ in
       ];
       focus.followMouse = false;
       startup = [
-        { always = true; command = "${pkgs.systemd}/bin/systemd-notify --ready || true"; }
-        { always = true; command = "${pkgs.networkmanagerapplet}/bin/nm-applet"; }
-        { always = true; command = "${pkgs.flashfocus}/bin/flashfocus"; }
+        {
+          always = true;
+          command = "${pkgs.systemd}/bin/systemd-notify --ready || true";
+        }
+        {
+          always = true;
+          command = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+        }
       ];
       modifier = "Mod1";
       keybindings = {
@@ -145,14 +157,14 @@ in
           theme = {
             theme = "solarized-dark";
             overrides = {
-              info_bg="#aad94c";
-              idle_bg="#59c2ff";
-              idle_fg="#000000";
+              info_bg = "#aad94c";
+              idle_bg = "#59c2ff";
+              idle_fg = "#000000";
             };
           };
         };
-        theme="solarized-dark";
-        icons="material-nf";
+        theme = "solarized-dark";
+        icons = "material-nf";
       };
     };
   };
