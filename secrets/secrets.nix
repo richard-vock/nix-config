@@ -11,6 +11,10 @@ let
   allSystems = builtins.attrValues systems;
 in
 {
+  # encrypting the public key is not really necessary,
+  # but this way the key pair is not scattered around the config
+  "id_ed25519_main.pub.age".publicKeys = allUsers ++ allSystems;
+  "id_ed25519_main.age".publicKeys = allUsers ++ allSystems;
   "user_richard.age".publicKeys = allUsers ++ allSystems;
   "user_root.age".publicKeys = allUsers ++ allSystems;
   "sync_smb.age".publicKeys = allUsers ++ [ systems.sync ];

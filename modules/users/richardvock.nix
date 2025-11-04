@@ -4,6 +4,21 @@ let
 in
 {
   age.secrets.user_richard.file = ../../secrets/user_richard.age;
+  age.secrets."id_ed25519_main" = {
+    file = ../../secrets/id_ed25519_main.age;
+    path = "/home/richard/.ssh/id_ed25519_main";
+    owner = "richard";
+    group = "users";
+    mode = "0600";
+  };
+  age.secrets."id_ed25519_main.pub" = {
+    file = ../../secrets/id_ed25519_main.pub.age;
+    path = "/home/richard/.ssh/id_ed25519_main.pub";
+    owner = "richard";
+    group = "users";
+    mode = "0644";
+  };
+
   nix.settings.trusted-users = [ "richard" ];
   users.users.richard = {
     isNormalUser = true;
