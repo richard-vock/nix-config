@@ -40,20 +40,8 @@
       enable = true;
       bashrcExtra = ''
         set -o vi
-        export EDITOR=vim
+        export EDITOR=nvim
         export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
-
-        # Makes `nix inate` as an alias of `nix shell`.
-        nix() {
-          case $1 in
-            inate)
-              shift
-              command nix shell "$@"
-              ;;
-            *)
-              command nix "$@";;
-          esac
-        }
 
         if command -v fzf-share >/dev/null; then
           source "$(fzf-share)/key-bindings.bash"
