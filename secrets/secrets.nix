@@ -12,6 +12,7 @@ let
 in
 {
   "user_richard.age".publicKeys = allUsers ++ allSystems;
+  "user_root.age".publicKeys = allUsers ++ allSystems;
   "sync_smb.age".publicKeys = allUsers ++ [ systems.sync ];
   "restic_data.age".publicKeys = allUsers ++ [ systems.home ];
   "restic_data_env.age".publicKeys = allUsers ++ [ systems.home ];
