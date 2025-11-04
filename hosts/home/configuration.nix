@@ -37,6 +37,7 @@ with config.lib.stylix.colors.withHashtag;
     extraSpecialArgs = {
       inherit inputs;
       headless = false;
+      hostName = config.networking.hostName;
     };
   };
 

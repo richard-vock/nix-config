@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  hostName,
   ...
 }:
 
@@ -12,6 +13,41 @@ let
   i3lockcmd = "${pkgs.swaylock}/bin/i3lock -c '#232323'";
   maim = "${pkgs.maim}/bin/maim";
   xclip = "${pkgs.xclip}/bin/xclip";
+
+  perHost = {
+    tuxedo = {
+      trayOutput = "DP-2";
+      barFontSize = 11.0;
+      barHeight = "height 40";
+      workspaceOutputs = [
+        {
+          output = "DP-2";
+          workspace = "1";
+        }
+      ];
+    };
+    home = {
+      barFontSize = 11.0;
+      trayOutput = "DP-2";
+      barHeight = "height 25";
+      workspaceOutputs = [
+        {
+          output = "HDMI-0";
+          workspace = "1";
+        }
+        {
+          output = "DP-0";
+          workspace = "2";
+        }
+        {
+          output = "DP-2";
+          workspace = "3";
+        }
+      ];
+    };
+  };
+
+  cfg = perHost.${hostName} or perHost.home;
 in
 {
   home.packages = with pkgs; [
@@ -27,24 +63,19 @@ in
       inherit terminal;
       bars = [
         {
-          trayOutput = "DP-2";
+          trayOutput = cfg.trayOutput;
           fonts = {
             names = [ "Hack Nerd" ];
-            size = 11.0;
+            size = cfg.barFontSize;
           };
           statusCommand = "i3status-rs $HOME/.config/i3status-rust/config-default.toml";
-          extraConfig = "height 25";
+          extraConfig = cfg.barHeight;
           colors = {
             focusedWorkspace = {
               background = "#59c2ff";
               text = "#000000";
               border = "#000000";
             };
-            # activeWorkspace = {
-            #   background = "#59c2ff";
-            #   text = "#000000";
-            #   border = "#000000";
-            # };
           };
         }
       ];
@@ -52,20 +83,7 @@ in
         hideEdgeBorders = "both";
       };
       workspaceLayout = "tabbed";
-      workspaceOutputAssign = [
-        {
-          output = "HDMI-0";
-          workspace = "1";
-        }
-        {
-          output = "DP-0";
-          workspace = "2";
-        }
-        {
-          output = "DP-2";
-          workspace = "3";
-        }
-      ];
+      workspaceOutputAssign = cfg.workspaceOutputs;
       focus.followMouse = false;
       startup = [
         {
@@ -143,9 +161,6 @@ in
     bars = {
       default = {
         blocks = [
-          # {
-          #   block = "music";
-          # }
           {
             block = "time";
             interval = 1;
