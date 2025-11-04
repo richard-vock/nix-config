@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 with config.lib.stylix.colors.withHashtag;
 
@@ -8,8 +14,10 @@ with config.lib.stylix.colors.withHashtag;
     profiles-base
     profiles-desktop
     users-richardvock
-    mixins-steam
     mixins-direnv
+    mixins-docker
+    mixins-steam
+    mixins-nodejs
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -48,18 +56,18 @@ with config.lib.stylix.colors.withHashtag;
     interfaces = {
       "enp2s0".useDHCP = true;
     };
-    extraHosts = ''
-      10.20.0.21      rpi5
-      10.20.0.113     dminds-bon-03
-    '';
+    # extraHosts = ''
+    #   10.20.0.21      rpi5
+    #   10.20.0.113     dminds-bon-03
+    # '';
   };
 
   services = {
-    logind.killUserProcesses = true;
+    logind.settings.Login.KillUserProcesses = true;
   };
 
   boot = {
-    blacklistedKernelModules = ["nouveau"];
+    blacklistedKernelModules = [ "nouveau" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -69,7 +77,7 @@ with config.lib.stylix.colors.withHashtag;
       efi = {
         canTouchEfiVariables = true;
       };
-      timeout = 3000;
+      timeout = lib.mkForce 3000;
     };
   };
 
@@ -82,7 +90,7 @@ with config.lib.stylix.colors.withHashtag;
   time.timeZone = "Europe/Berlin";
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
     nvidia.modesetting.enable = true;
     nvidia.open = false;
