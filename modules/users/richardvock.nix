@@ -12,6 +12,8 @@ in
       "wheel"
       "dialout"
     ];
-    openssh.authorizedKeys.keys = keys.richard;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBOipqKXXn3zmGmkXTucbZH3JDuJB+99G6hRByUuZvnk rvock@mailbox.org"
+    ];
   };
 }
