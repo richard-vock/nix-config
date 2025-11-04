@@ -49,6 +49,9 @@
         # gopls = {
         #   enable = true;
         # };
+        svelte = {
+          enable = true;
+        };
         terraformls = {
           enable = true;
         };
