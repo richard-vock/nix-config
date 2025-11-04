@@ -50,7 +50,7 @@ with config.lib.stylix.colors.withHashtag;
       allowedTCPPorts = [ 55522 ];
       allowedUDPPorts = [ 55522 ];
     };
-    hostName = "home";
+    hostName = "tuxedo";
     networkmanager.enable = true;
     useDHCP = false;
     interfaces = {
