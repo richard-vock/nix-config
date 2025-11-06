@@ -2,8 +2,28 @@
 {
   plugins.treesitter = {
     enable = true;
-    settings.indent ={
-      enable = true;
+    settings = {
+      ensure_installed = [
+        "bash"
+        "css"
+        "gitignore"
+        "html"
+        "javascript"
+        "json"
+        "lua"
+        "markdown"
+        "markdown_inline"
+        "nix"
+        "regex"
+        "svelte"
+        "tsx"
+        "typescript"
+        "vim"
+        "vimdoc"
+        "yaml"
+      ];
+      highlight.enable = true;
+      indent.enable = true;
     };
   };
 
