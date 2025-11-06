@@ -54,28 +54,6 @@
           ];
           specialArgs = { inherit inputs; };
         };
-        sync = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            utils.nixosModules.autoGenFromInputs
-            home-manager.nixosModules.home-manager
-            stylix.nixosModules.stylix
-            agenix.nixosModules.default
-            ./hosts/sync/configuration.nix
-          ];
-          specialArgs = { inherit inputs; };
-        };
-        kawcloud = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            utils.nixosModules.autoGenFromInputs
-            home-manager.nixosModules.home-manager
-            stylix.nixosModules.stylix
-            agenix.nixosModules.default
-            ./hosts/kawcloud/configuration.nix
-          ];
-          specialArgs = { inherit inputs; };
-        };
       };
     };
 }
