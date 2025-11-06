@@ -18,9 +18,9 @@ let
     # ./nixvim/yanky.nix
     ./nixvim/autopairs.nix
     ./nixvim/blink-cmp.nix
+    ./nixvim/fidget.nix
     # ./nixvim/smear-cursor.nix
     ./nixvim/lsp/conform.nix
-    ./nixvim/lsp/fidget.nix
     ./nixvim/lsp/lsp.nix
     # ./nixvim/nix-develop.nix
     # ./nixvim/kulala.nix
